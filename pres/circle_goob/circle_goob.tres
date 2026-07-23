@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bd1dyf4dmpcpm"]
+
+[ext_resource type="Texture2D" uid="uid://dadt7c8vldj1v" path="res://pres/circle_goob/tex/circle_goob_idle_1.png" id="1_jqaes"]
+[ext_resource type="Texture2D" uid="uid://blbc6jpsjbvio" path="res://pres/circle_goob/tex/circle_goob_idle_2.png" id="2_sh545"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jqaes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sh545")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]

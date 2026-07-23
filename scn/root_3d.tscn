@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccba457kctdg2"]
+
+[ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver.gd" id="1_0lpx0"]
+[ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
+[ext_resource type="PackedScene" uid="uid://cs6g44k3tynib" path="res://scn/dev_3d.tscn" id="3_t544i"]
+
+[sub_resource type="Environment" id="Environment_2i45h"]
+
+[node name="Root3D" type="Node3D" unique_id=293381945]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=126601292]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 50, 0)
+environment = SubResource("Environment_2i45h")
+projection = 1
+size = 75.0
+
+[node name="InputReceiver" type="Node" parent="." unique_id=1287798128 node_paths=PackedStringArray("camera")]
+script = ExtResource("1_0lpx0")
+camera = NodePath("../Camera3D")
+
+[node name="CameraToWorldRaycast3D" type="Node3D" parent="." unique_id=1556988710 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 50, 0)
+script = ExtResource("2_t544i")
+camera = NodePath("../Camera3D")
+collision_mask = 32768
+metadata/_custom_type_script = "uid://bbvmuefboahto"
+
+[node name="Levels" type="Node3D" parent="." unique_id=1203793433]
+
+[node name="Dev3D" parent="Levels" unique_id=1755585419 instance=ExtResource("3_t544i")]

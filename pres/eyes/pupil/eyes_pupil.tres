@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://koj3ablv267g"]
+
+[ext_resource type="Texture2D" uid="uid://ba8mi6miwe5jq" path="res://pres/eyes/pupil/tex/eyes_pupil_1.png" id="1_6jwl1"]
+[ext_resource type="Texture2D" uid="uid://cb67mb2u1yo35" path="res://pres/eyes/pupil/tex/eyes_pupil_2.png" id="2_wkir4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6jwl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wkir4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

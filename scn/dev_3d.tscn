@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cs6g44k3tynib"]
+
+[ext_resource type="Script" uid="uid://cnckw3uqi3ivq" path="res://src/goob/goob_body_3d.gd" id="1_dskj8"]
+[ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/circle_goob/circle_goob.tres" id="1_mqcvn"]
+[ext_resource type="SpriteFrames" uid="uid://die2yn52fn548" path="res://pres/eyes/circle/eyes_circle.tres" id="2_qqtlv"]
+[ext_resource type="SpriteFrames" uid="uid://koj3ablv267g" path="res://pres/eyes/pupil/eyes_pupil.tres" id="3_dskj8"]
+[ext_resource type="Script" uid="uid://65y61rxo7dat" path="res://src/goob/state/goob_state_machine_3d.gd" id="4_qqtlv"]
+[ext_resource type="Script" uid="uid://tiomea22mska" path="res://src/goob/goob_clicked_listener_3d.gd" id="4_tm7r2"]
+[ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="6_tm7r2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qqtlv"]
+height = 1.0
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d30nk"]
+radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqtlv"]
+size = Vector3(500, 1, 500)
+
+[node name="Dev3D" type="Node3D" unique_id=1755585419]
+
+[node name="GoobBody3D" type="RigidBody3D" parent="." unique_id=1379546710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 2
+input_ray_pickable = false
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+lock_rotation = true
+script = ExtResource("1_dskj8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobBody3D" unique_id=703986425]
+shape = SubResource("CylinderShape3D_qqtlv")
+
+[node name="GoobRenderer3D" type="Node3D" parent="GoobBody3D" unique_id=674779]
+
+[node name="BodySprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=324245216]
+modulate = Color(0, 0, 0, 1)
+axis = 1
+sprite_frames = ExtResource("1_mqcvn")
+animation = &"idle"
+frame_progress = 0.15664127
+
+[node name="EyeSprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=419064174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+axis = 1
+sprite_frames = ExtResource("2_qqtlv")
+frame_progress = 0.7310233
+
+[node name="PupilSprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D/EyeSprite3D" unique_id=21144142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+axis = 1
+sprite_frames = ExtResource("3_dskj8")
+frame_progress = 0.44203055
+
+[node name="GoobStateMachine3D" type="Node3D" parent="GoobBody3D" unique_id=1438574578 node_paths=PackedStringArray("body_3d")]
+script = ExtResource("4_qqtlv")
+body_3d = NodePath("..")
+starting_state = 3
+
+[node name="GoobGrabbedState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1751753361]
+script = ExtResource("6_tm7r2")
+metadata/_custom_type_script = "uid://d3vv7dlytmqyk"
+
+[node name="GoobClickedListener3D" type="Area3D" parent="GoobBody3D/GoobStateMachine3D/GoobGrabbedState3D" unique_id=656116134]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_tm7r2")
+metadata/_custom_type_script = "uid://tiomea22mska"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobBody3D/GoobStateMachine3D/GoobGrabbedState3D/GoobClickedListener3D" unique_id=2140937018]
+shape = SubResource("SphereShape3D_d30nk")
+
+[node name="Floor3D" type="StaticBody3D" parent="." unique_id=1668925330]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3D" unique_id=1439112581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_qqtlv")
