@@ -4,10 +4,22 @@ class_name GoobStateMachine3D
 @export var body_3d: GoobBody3D
 @export var starting_state: Constants.GoobState
 
+var _states: Dictionary[Constants.GoobState, GoobState3D] = {}
+var _current_state: GoobState3D
+
 func _ready() -> void:
-	# get all children of type GoobState3D
-	# for each, call setup(), subscribe signal and store in dict
-	pass
+	for child in get_children():
+		if child is GoobState3D:
+			var state := child as GoobState3D
+			state.setup(body_3d)
+			state.request_state.connect(set_state)
+			_states[state.get_id()] = state
+	set_state(starting_state)
 
 func set_state(state: Constants.GoobState) -> void:
-	pass 
+	if _current_state:
+		_current_state.exit()
+		print("exited %s" % _current_state.get_id())
+	_current_state = _states[state]
+	_current_state.enter()
+	print("entered %s" % state)
