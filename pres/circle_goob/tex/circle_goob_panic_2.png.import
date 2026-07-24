@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba8mi6miwe5jq"
-path.s3tc="res://.godot/imported/eyes_pupil_1.png-ec6da50511e0da167afb062e9b1374ce.s3tc.ctex"
+uid="uid://d0ru6g07mtob4"
+path.s3tc="res://.godot/imported/circle_goob_panic_2.png-b1d220f00919218bcebfa24f02f9d27a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://pres/eyes/pupil/tex/eyes_pupil_1.png"
-dest_files=["res://.godot/imported/eyes_pupil_1.png-ec6da50511e0da167afb062e9b1374ce.s3tc.ctex"]
+source_file="res://pres/circle_goob/tex/circle_goob_panic_2.png"
+dest_files=["res://.godot/imported/circle_goob_panic_2.png-b1d220f00919218bcebfa24f02f9d27a.s3tc.ctex"]
 
 [params]
 

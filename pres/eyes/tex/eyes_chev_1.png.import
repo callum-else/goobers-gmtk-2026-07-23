@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2anyohum08m2"
-path.s3tc="res://.godot/imported/eyes_circle_1.png-54fbb745ef165b5f0448a47e010d1e1e.s3tc.ctex"
+uid="uid://b5pv27qng3j1s"
+path.s3tc="res://.godot/imported/eyes_chev_1.png-57a475a8bbeaa967f65e489340bc66ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://pres/eyes/circle/tex/eyes_circle_1.png"
-dest_files=["res://.godot/imported/eyes_circle_1.png-54fbb745ef165b5f0448a47e010d1e1e.s3tc.ctex"]
+source_file="res://pres/eyes/tex/eyes_chev_1.png"
+dest_files=["res://.godot/imported/eyes_chev_1.png-57a475a8bbeaa967f65e489340bc66ec.s3tc.ctex"]
 
 [params]
 

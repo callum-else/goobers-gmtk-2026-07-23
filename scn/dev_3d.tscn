@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://cnckw3uqi3ivq" path="res://src/goob/goob_body_3d.gd" id="1_dskj8"]
 [ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/circle_goob/circle_goob.tres" id="1_mqcvn"]
 [ext_resource type="Script" uid="uid://cbgv2ypudob0d" path="res://src/goob/goob_renderer_3d.gd" id="2_liye1"]
-[ext_resource type="SpriteFrames" uid="uid://die2yn52fn548" path="res://pres/eyes/circle/eyes_circle.tres" id="2_qqtlv"]
-[ext_resource type="SpriteFrames" uid="uid://koj3ablv267g" path="res://pres/eyes/pupil/eyes_pupil.tres" id="3_dskj8"]
 [ext_resource type="Script" uid="uid://65y61rxo7dat" path="res://src/goob/state/goob_state_machine_3d.gd" id="4_qqtlv"]
 [ext_resource type="Script" uid="uid://tiomea22mska" path="res://src/goob/goob_clicked_listener_3d.gd" id="4_tm7r2"]
+[ext_resource type="SpriteFrames" uid="uid://bpa1p2r7flmwq" path="res://pres/eyes/eyes.tres" id="4_v54e0"]
 [ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="6_tm7r2"]
 [ext_resource type="Script" uid="uid://cp380qahcavy" path="res://src/goob/state/goob_thrown_state_3d.gd" id="9_u28rl"]
 [ext_resource type="Script" uid="uid://bt3etm0y2rjuk" path="res://src/goob/state/goob_run_to_point_state_3d.gd" id="10_trnre"]
@@ -52,30 +51,25 @@ shape = SubResource("CylinderShape3D_qqtlv")
 script = ExtResource("2_liye1")
 
 [node name="BodySprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=324245216]
-modulate = Color(0.38039216, 0.24705882, 0.81960785, 1)
+modulate = Color(1, 0.75686276, 0.02745098, 1)
 axis = 1
 sprite_frames = ExtResource("1_mqcvn")
-animation = &"idle"
+animation = &"panic"
 autoplay = "idle"
-frame_progress = 0.6663561
+frame_progress = 0.8941393
 
 [node name="EyeSprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=419064174]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, 0)
 axis = 1
-sprite_frames = ExtResource("2_qqtlv")
-autoplay = "default"
-frame_progress = 0.7310233
+sprite_frames = ExtResource("4_v54e0")
+animation = &"chevron"
+autoplay = "open"
+frame_progress = 0.6074681
 
-[node name="PupilSprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D/EyeSprite3D" unique_id=21144142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-axis = 1
-sprite_frames = ExtResource("3_dskj8")
-autoplay = "default"
-frame_progress = 0.44203055
-
-[node name="GoobStateMachine3D" type="Node3D" parent="GoobBody3D" unique_id=1438574578 node_paths=PackedStringArray("body_3d")]
+[node name="GoobStateMachine3D" type="Node3D" parent="GoobBody3D" unique_id=1438574578 node_paths=PackedStringArray("body_3d", "renderer_3d")]
 script = ExtResource("4_qqtlv")
 body_3d = NodePath("..")
+renderer_3d = NodePath("../GoobRenderer3D")
 starting_state = 3
 
 [node name="GoobGrabbedState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1751753361]
@@ -101,14 +95,13 @@ metadata/_custom_type_script = "uid://cp380qahcavy"
 [node name="GoobConfusedState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1048424525]
 script = ExtResource("12_v54e0")
 timeout_state = 3
-min_confused_timeout = 1.0
-max_confuded_timeout = 2.0
+min_confused_timeout = 1.5
+max_confuded_timeout = 3.0
 metadata/_custom_type_script = "uid://bbbdibdwvm4j5"
 
 [node name="GoobRunToPointState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1657231510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("10_trnre")
-target_pos = null
 target_radius = 8.0
 randomize_target_pos = true
 target_reached_state = 4
@@ -126,7 +119,7 @@ axis = 1
 render_priority = -100
 sprite_frames = ExtResource("13_st74h")
 autoplay = "default"
-frame_progress = 0.5722597
+frame_progress = 0.7141019
 
 [node name="Floor3D" type="StaticBody3D" parent="." unique_id=1668925330]
 collision_layer = 2

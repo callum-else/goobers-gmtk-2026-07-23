@@ -1,17 +1,19 @@
 extends GoobState3D
 class_name GoobIdleState3D
 
+var _args: GoobState3D.SetupArgs
+
 func _ready() -> void:
 	set_physics_process(false)
 
 func get_id() -> Constants.GoobState:
 	return Constants.GoobState.IDLE
 
-func setup(_body_3d: RigidBody3D) -> void:
-	pass
+func setup(args: GoobState3D.SetupArgs) -> void:
+	_args = args
 
 func enter() -> void:
-	pass
+	_args.renderer.begin_idle_anim()
 
 func exit() -> void:
 	pass

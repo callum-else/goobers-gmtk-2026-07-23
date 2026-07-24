@@ -2,6 +2,16 @@
 extends Node3D
 class_name GoobState3D
 
+class SetupArgs:
+	var body: RigidBody3D
+	var renderer: GoobRenderer3D
+	func _init(
+		body_3d: RigidBody3D, 
+		renderer_3d: GoobRenderer3D
+	) -> void:
+		body = body_3d
+		renderer = renderer_3d
+
 @warning_ignore("unused_signal")
 signal request_state(state: Constants.GoobState)
 
@@ -9,7 +19,7 @@ signal request_state(state: Constants.GoobState)
 func get_id() -> Constants.GoobState
 
 @abstract
-func setup(body_3d: RigidBody3D) -> void
+func setup(args: SetupArgs) -> void
 
 @abstract
 func enter() -> void
