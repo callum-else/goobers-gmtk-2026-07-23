@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://tiomea22mska" path="res://src/goob/goob_clicked_listener_3d.gd" id="4_tm7r2"]
 [ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="6_tm7r2"]
 [ext_resource type="Script" uid="uid://cp380qahcavy" path="res://src/goob/state/goob_thrown_state_3d.gd" id="9_u28rl"]
+[ext_resource type="Script" uid="uid://bt3etm0y2rjuk" path="res://src/goob/state/goob_run_to_point_state_3d.gd" id="10_trnre"]
+[ext_resource type="Script" uid="uid://bppjv7top5065" path="res://src/goob/state/goob_idle_state_3d.gd" id="11_3evur"]
+[ext_resource type="Script" uid="uid://bbbdibdwvm4j5" path="res://src/goob/state/goob_confused_state_3d.gd" id="12_v54e0"]
+[ext_resource type="SpriteFrames" uid="uid://doyjmx1h44clp" path="res://pres/circle_objective/circle_objective.tres" id="13_st74h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u28rl"]
 friction = 0.2
@@ -27,7 +31,7 @@ size = Vector3(500, 1, 500)
 [node name="Dev3D" type="Node3D" unique_id=1755585419]
 
 [node name="GoobBody3D" type="RigidBody3D" parent="." unique_id=1379546710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.051092, 1, -13.148861)
 collision_mask = 2
 input_ray_pickable = false
 axis_lock_angular_x = true
@@ -48,12 +52,12 @@ shape = SubResource("CylinderShape3D_qqtlv")
 script = ExtResource("2_liye1")
 
 [node name="BodySprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=324245216]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.38039216, 0.24705882, 0.81960785, 1)
 axis = 1
 sprite_frames = ExtResource("1_mqcvn")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.15664127
+frame_progress = 0.6663561
 
 [node name="EyeSprite3D" type="AnimatedSprite3D" parent="GoobBody3D/GoobRenderer3D" unique_id=419064174]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -72,6 +76,7 @@ frame_progress = 0.44203055
 [node name="GoobStateMachine3D" type="Node3D" parent="GoobBody3D" unique_id=1438574578 node_paths=PackedStringArray("body_3d")]
 script = ExtResource("4_qqtlv")
 body_3d = NodePath("..")
+starting_state = 3
 
 [node name="GoobGrabbedState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1751753361]
 script = ExtResource("6_tm7r2")
@@ -90,7 +95,38 @@ shape = SubResource("SphereShape3D_d30nk")
 
 [node name="GoobThrownState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1253091846]
 script = ExtResource("9_u28rl")
+on_idle_state = 2
 metadata/_custom_type_script = "uid://cp380qahcavy"
+
+[node name="GoobConfusedState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1048424525]
+script = ExtResource("12_v54e0")
+timeout_state = 3
+min_confused_timeout = 1.0
+max_confuded_timeout = 2.0
+metadata/_custom_type_script = "uid://bbbdibdwvm4j5"
+
+[node name="GoobRunToPointState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=1657231510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("10_trnre")
+target_pos = null
+target_radius = 8.0
+randomize_target_pos = true
+target_reached_state = 4
+metadata/_custom_type_script = "uid://bt3etm0y2rjuk"
+
+[node name="GoobIdleState3D" type="Node3D" parent="GoobBody3D/GoobStateMachine3D" unique_id=262001334]
+script = ExtResource("11_3evur")
+metadata/_custom_type_script = "uid://bppjv7top5065"
+
+[node name="CircleSprite3D" type="AnimatedSprite3D" parent="." unique_id=1600066166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, -0.1, 0)
+modulate = Color(0, 0, 0, 1)
+pixel_size = 0.022
+axis = 1
+render_priority = -100
+sprite_frames = ExtResource("13_st74h")
+autoplay = "default"
+frame_progress = 0.5722597
 
 [node name="Floor3D" type="StaticBody3D" parent="." unique_id=1668925330]
 collision_layer = 2

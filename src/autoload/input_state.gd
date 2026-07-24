@@ -17,6 +17,7 @@ func get_mouse_world_pos(y: float) -> Vector3:
 	return Vector3(_mouse_world_pos.x, y, _mouse_world_pos.z)
 
 func set_input_primary(is_down: bool) -> void:
+	print("input primary %s" % is_down)
 	_input_primary = is_down
 	Events.on_input_primary.emit(_input_primary)
 
