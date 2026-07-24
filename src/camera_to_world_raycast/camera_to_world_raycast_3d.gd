@@ -4,11 +4,17 @@ class_name CameraToWorldRaycast3D
 @export var camera: Camera3D
 @export_flags_3d_physics var collision_mask: int
 
+var _can_input: bool
+
 func _ready() -> void:
+	Events.update_raycast_input.connect(_update_raycast_input)
 	Events.on_input_primary.connect(_on_input_primary)
 
+func _update_raycast_input(enabled: bool) -> void:
+	_can_input = enabled
+
 func _on_input_primary(is_down: bool) -> void:
-	if (!is_down):
+	if (!_can_input or !is_down):
 		return
 	var mouse_pos: Vector2 = InputState.get_mouse_screen_pos()
 	var ray_origin: Vector3 = camera.project_ray_origin(mouse_pos)

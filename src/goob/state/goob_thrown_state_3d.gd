@@ -35,4 +35,4 @@ func _physics_process(delta: float) -> void:
 		_timeout -= delta
 		return
 	if (_args.body.linear_velocity.length() < MIN_VELOCITY_LENGTH):
-		request_state.emit(on_idle_state)
+		request_state.emit(on_idle_state, true)

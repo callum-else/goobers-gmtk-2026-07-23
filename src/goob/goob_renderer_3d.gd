@@ -4,26 +4,38 @@ class_name GoobRenderer3D
 const MIN_SCALE: float = 1
 const MAX_SCALE: float = 1.8
 
-@onready var _body: AnimatedSprite3D = $BodySprite3D
-@onready var _eyes: AnimatedSprite3D = $EyeSprite3D
+@onready var _body_spr: AnimatedSprite3D = $BodySprite3D
+@onready var _eyes_spr: AnimatedSprite3D = $EyeSprite3D
 
 func _physics_process(_delta: float) -> void:
-	# 1 is the smallest size possible for the goob, representing goob at y=0
-	# scale grows linearly with height, reaching MAX_SCALE at Constants.GRAB_HEIGHT
 	var pos_scale: float = clamp(
 		MIN_SCALE + (global_position.y / Constants.GRAB_HEIGHT) * (MAX_SCALE - MIN_SCALE),
 		MIN_SCALE, MAX_SCALE
 	)
 	scale = Vector3(pos_scale, pos_scale, pos_scale)
+	var abs_position: Vector3 = global_position.abs()
+	var priority := int(max(abs_position.x + abs_position.z, 100.0))
+	_body_spr.render_priority = priority
+	_eyes_spr.render_priority = priority
+
+func _get_rand_speed_offset() -> float:
+	return randf_range(0.9, 1.1)
+
+func freeze() -> void:
+	_body_spr.pause()
+	_eyes_spr.pause()
 
 func begin_running_anim() -> void:
-	_body.play("run")
-	_eyes.play("open")
+	var offset = _get_rand_speed_offset()
+	_body_spr.play("run", offset)
+	_eyes_spr.play("open", offset)
 
 func begin_idle_anim() -> void:
-	_body.play("idle")
-	_eyes.play("open")
+	var offset = _get_rand_speed_offset()
+	_body_spr.play("idle", offset)
+	_eyes_spr.play("open", offset)
 
 func begin_panic_anim() -> void:
-	_body.play("panic")
-	_eyes.play("chevron")
+	var offset = _get_rand_speed_offset()
+	_body_spr.play("panic", offset)
+	_eyes_spr.play("chevron", offset)

@@ -8,6 +8,7 @@ class_name GoobStateMachine3D
 
 var _states: Dictionary[Constants.GoobState, GoobState3D] = {}
 var _current_state: GoobState3D
+var _can_change_state: bool = true
 
 func _ready() -> void:
 	var args = GoobState3D.SetupArgs.new(
@@ -20,12 +21,13 @@ func _ready() -> void:
 			state.setup(args)
 			state.request_state.connect(set_state)
 			_states[state.get_id()] = state
-	set_state(starting_state)
+	set_state(starting_state, true)
 
-func set_state(state: Constants.GoobState) -> void:
+func set_state(state: Constants.GoobState, can_change: bool = true) -> void:
+	if (not _can_change_state):
+		return
+	_can_change_state = can_change
 	if _current_state:
 		_current_state.exit()
-		print("exited %s" % _current_state.get_id())
 	_current_state = _states[state]
 	_current_state.enter()
-	print("entered %s" % state)

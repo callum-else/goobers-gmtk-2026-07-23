@@ -6,7 +6,7 @@ class_name GoobConfusedState3D
 @export var max_confuded_timeout: float
 
 var _args: GoobState3D.SetupArgs
-var _timed_out: bool 
+var _timed_out: bool
 var _timeout: float
 var _calm: bool
 var _calm_time: float
@@ -39,5 +39,5 @@ func _physics_process(delta: float) -> void:
 		_calm = true
 		_args.renderer.begin_idle_anim()
 	if (_timeout < 0.0):
-		request_state.emit(timeout_state)
+		request_state.emit(timeout_state, true)
 		_timed_out = true

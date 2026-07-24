@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bjh0l60yvu740"]
+
+[ext_resource type="FontFile" uid="uid://dw1sg45jbh65u" path="res://pres/fonts/Vividly-Regular.ttf" id="1_dvj26"]
+
+[resource]
+font = ExtResource("1_dvj26")
+font_size = 104
+font_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
+outline_size = 10
+outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)

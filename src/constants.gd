@@ -5,7 +5,13 @@ enum GoobState {
 	THROWN,
 	CONFUSED,
 	RUN_TO_FIXED_POSITION,
-	IDLE
+	IDLE,
+	WAITING,
+	FREEZE
+}
+
+enum LevelId {
+	KEEP_OUT_CIRCLE
 }
 
 const GRAB_HEIGHT = 5

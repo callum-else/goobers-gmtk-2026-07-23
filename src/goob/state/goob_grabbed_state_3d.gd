@@ -51,8 +51,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_goob_clicked() -> void:
 	_is_held = true
-	request_state.emit(Constants.GoobState.GRABBED)
+	request_state.emit(Constants.GoobState.GRABBED, true)
 
 func _on_goob_released() -> void:
 	_is_held = false
-	request_state.emit(on_released_state)
+	request_state.emit(on_released_state, true)
