@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://g82uko4ka4ts"]
+
+[ext_resource type="Script" uid="uid://ccd66rtdjqy4m" path="res://src/no_running/nr_level_3d.gd" id="1_kwxdn"]
+[ext_resource type="Script" uid="uid://b8fo8n17p17co" path="res://src/no_running/nr_goob_spawner_3d.gd" id="2_4yqsf"]
+[ext_resource type="Resource" uid="uid://c34lo16gk8lqg" path="res://scn/levels/no_running/nr_level_config.tres" id="2_sia7p"]
+[ext_resource type="Script" uid="uid://4yeklgcem285" path="res://src/limits/limits_area_3d.gd" id="3_7jwle"]
+[ext_resource type="Script" uid="uid://cnywb5sjtlxjp" path="res://src/no_running/nr_objective_3d.gd" id="3_ad3fn"]
+[ext_resource type="PackedScene" uid="uid://dmnoa6crqw475" path="res://scn/levels/no_running/nr_goob_3d.tscn" id="3_sia7p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwxdn"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4yqsf"]
+size = Vector3(40, 40, 40)
+
+[node name="NoRunningLevel3D" type="Node3D" unique_id=1174693956]
+script = ExtResource("1_kwxdn")
+level_config = ExtResource("2_sia7p")
+
+[node name="GoobSpawner3D" type="Node3D" parent="." unique_id=1653467729]
+script = ExtResource("2_4yqsf")
+goob_scene = ExtResource("3_sia7p")
+goob_count = 12
+max_distribution_distance = 15.0
+
+[node name="Floor3D" type="StaticBody3D" parent="." unique_id=84659900]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3D" unique_id=1606591287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_kwxdn")
+
+[node name="Limits3D" type="Area3D" parent="." unique_id=874351305]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+script = ExtResource("3_7jwle")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Limits3D" unique_id=220243972]
+shape = SubResource("BoxShape3D_4yqsf")
+
+[node name="Objective3D" type="Node3D" parent="." unique_id=1641196979 node_paths=PackedStringArray("spawner")]
+script = ExtResource("3_ad3fn")
+spawner = NodePath("../GoobSpawner3D")

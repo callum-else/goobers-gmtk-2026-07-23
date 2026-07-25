@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cs6g44k3tynib"]
 
-[ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle/koc_goob.tscn" id="1_ofloa"]
+[ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle/koc_goob_3d.tscn" id="1_ofloa"]
 [ext_resource type="SpriteFrames" path="res://pres/circle_objective/circle_objective_frames.tres" id="13_st74h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqtlv"]

@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
 [ext_resource type="Script" uid="uid://dn4odk3gmromw" path="res://src/gameplay/level/level_manager_3d.gd" id="4_u5bw3"]
 [ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
-[ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level.tscn" id="5_pwrtq"]
+[ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level_3d.tscn" id="5_pwrtq"]
+[ext_resource type="PackedScene" uid="uid://g82uko4ka4ts" path="res://scn/levels/no_running/nr_level_3d.tscn" id="6_b3ktp"]
 [ext_resource type="Script" uid="uid://cvbgeq2xi2blk" path="res://src/gameplay/state/gameplay_level_state_3d.gd" id="7_u5bw3"]
 [ext_resource type="Script" uid="uid://dihj2carme58n" path="res://src/gameplay/state/gameplay_configuration_state_3d.gd" id="8_cxubq"]
 [ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="9_mwnnt"]
@@ -43,7 +44,8 @@ metadata/_custom_type_script = "uid://bbvmuefboahto"
 script = ExtResource("4_u5bw3")
 win_level = ExtResource("5_c1aws")
 levels = Dictionary[int, PackedScene]({
-0: ExtResource("5_pwrtq")
+0: ExtResource("5_pwrtq"),
+1: ExtResource("6_b3ktp")
 })
 
 [node name="GameplayStateMachine3D" type="Node3D" parent="." unique_id=1122003603 node_paths=PackedStringArray("control_renderer", "level_manager")]

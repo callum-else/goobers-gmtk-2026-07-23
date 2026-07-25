@@ -7,7 +7,7 @@ const MAX_VELOCITY_LENGTH: float = 40.0
 @export var on_released_state: Constants.GoobState
 
 var _args: GoobState3D.SetupArgs
-var _on_click_listener: GoobClickedListener3D
+var _on_click_listener: CameraToWorldRaycastListener3D
 var _is_held: bool
 var _velocity: Vector3
 
@@ -19,7 +19,7 @@ func get_id() -> Constants.GoobState:
 
 func setup(args: GoobState3D.SetupArgs) -> void:
 	_on_click_listener = $GoobClickedListener3D
-	_on_click_listener.on_goob_clicked.connect(_on_goob_clicked)
+	_on_click_listener.on_hit.connect(_on_goob_clicked)
 	_args = args
 
 func enter() -> void:

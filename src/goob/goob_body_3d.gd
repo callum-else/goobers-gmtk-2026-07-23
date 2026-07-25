@@ -12,3 +12,6 @@ func setup(
 	_renderer.set_body_color(body_color)
 	var state_args := GoobState3D.SetupArgs.new(self, _renderer)
 	_state_machine.setup(state_args)
+
+func get_current_state() -> Constants.GoobState:
+	return _state_machine.get_state_id()

@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cnckw3uqi3ivq" path="res://src/goob/goob_body_3d.gd" id="1_4hjme"]
 [ext_resource type="Script" uid="uid://hq3cj87obmb7" path="res://src/goob/goob_avoidance_3d.gd" id="2_8y71m"]
-[ext_resource type="Script" uid="uid://cbgv2ypudob0d" path="res://src/goob/goob_renderer_3d.gd" id="3_7k5rk"]
-[ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="4_lh8bf"]
-[ext_resource type="SpriteFrames" uid="uid://bpa1p2r7flmwq" path="res://pres/eyes/eyes_frames.tres" id="5_fwt11"]
+[ext_resource type="PackedScene" uid="uid://b72ha4pq3ro55" path="res://scn/goob/goob_renderer_3d.tscn" id="2_qfw5c"]
+[ext_resource type="Script" uid="uid://brgymmepf8hmc" path="res://src/camera_to_world_raycast/camera_to_world_raycast_listener_3d.gd" id="5_qfw5c"]
 [ext_resource type="Script" uid="uid://65y61rxo7dat" path="res://src/goob/state/goob_state_machine_3d.gd" id="6_ja6xd"]
 [ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="7_yrx76"]
-[ext_resource type="Script" uid="uid://tiomea22mska" path="res://src/goob/goob_clicked_listener_3d.gd" id="8_y4ryj"]
 [ext_resource type="Script" uid="uid://cp380qahcavy" path="res://src/goob/state/goob_thrown_state_3d.gd" id="9_k32ol"]
 [ext_resource type="Script" uid="uid://bbbdibdwvm4j5" path="res://src/goob/state/goob_confused_state_3d.gd" id="10_sgehn"]
 [ext_resource type="Script" uid="uid://bt3etm0y2rjuk" path="res://src/goob/state/goob_run_to_point_state_3d.gd" id="11_y7kpv"]
@@ -44,24 +42,8 @@ script = ExtResource("1_4hjme")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_qqtlv")
 
-[node name="GoobRenderer3D" type="Node3D" parent="." unique_id=452766076]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0)
-script = ExtResource("3_7k5rk")
-
-[node name="BodySprite3D" type="AnimatedSprite3D" parent="GoobRenderer3D" unique_id=2109602750]
-modulate = Color(0.047058824, 0.03529412, 0.03137255, 1)
-axis = 1
-sprite_frames = ExtResource("4_lh8bf")
-animation = &"panic"
-autoplay = "idle"
-frame_progress = 0.0915916
-
-[node name="EyeSprite3D" type="AnimatedSprite3D" parent="GoobRenderer3D" unique_id=1237420688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-axis = 1
-sprite_frames = ExtResource("5_fwt11")
-animation = &"open"
-autoplay = "open"
+[node name="GoobRenderer3D" parent="." unique_id=1217293487 instance=ExtResource("2_qfw5c")]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715573, 0, 0.08715573, 0.9961947, 0, 0, 0)
 
 [node name="GoobStateMachine3D" type="Node3D" parent="." unique_id=1896786131]
 script = ExtResource("6_ja6xd")
@@ -76,8 +58,7 @@ metadata/_custom_type_script = "uid://d3vv7dlytmqyk"
 collision_layer = 32768
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_y4ryj")
-metadata/_custom_type_script = "uid://tiomea22mska"
+script = ExtResource("5_qfw5c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobGrabbedState3D/GoobClickedListener3D" unique_id=1021283267]
 shape = SubResource("SphereShape3D_d30nk")

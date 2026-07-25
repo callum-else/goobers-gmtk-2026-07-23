@@ -27,7 +27,7 @@ func _on_input_primary(is_down: bool) -> void:
 		return
 	var collider = result["collider"]
 	if (collider is CameraToWorldRaycastListener3D):
-		collider.on_hit()
+		collider.on_hit.emit()
 	
 func _get_ray_query_params(from: Vector3, to: Vector3) -> PhysicsRayQueryParameters3D:
 	var params = PhysicsRayQueryParameters3D.new()

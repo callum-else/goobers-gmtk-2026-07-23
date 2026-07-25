@@ -34,6 +34,8 @@ interact_primary={
 
 3d_physics/layer_1="goob_collider"
 3d_physics/layer_2="floor_collider"
+3d_physics/layer_3="limits_collider"
+3d_physics/layer_12="limits_listener"
 3d_physics/layer_16="cam_to_world_raycast_listener"
 
 [physics]

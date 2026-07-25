@@ -24,3 +24,6 @@ func set_state(state: Constants.GoobState, can_change: bool = true) -> void:
 		_current_state.exit()
 	_current_state = _states[state]
 	_current_state.enter()
+
+func get_state_id() -> Constants.GoobState:
+	return _current_state.get_id()

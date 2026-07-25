@@ -6,6 +6,9 @@ class_name GoobFreezeState3D
 
 var _args: GoobState3D.SetupArgs
 
+func _exit_tree() -> void:
+	exit()
+
 func get_id() -> Constants.GoobState:
 	return Constants.GoobState.FREEZE
 

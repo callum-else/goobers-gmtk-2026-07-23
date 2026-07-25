@@ -29,7 +29,7 @@ func enter() -> void:
 	set_physics_process(true)
 
 func exit() -> void:
-	set_physics_process(true)
+	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
 	if (_timed_out):
