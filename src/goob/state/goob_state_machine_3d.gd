@@ -1,20 +1,13 @@
 extends Node3D
 class_name GoobStateMachine3D
 
-@export var body_3d: GoobBody3D
-@export var renderer_3d: GoobRenderer3D
-
 @export var starting_state: Constants.GoobState
 
 var _states: Dictionary[Constants.GoobState, GoobState3D] = {}
 var _current_state: GoobState3D
 var _can_change_state: bool = true
 
-func _ready() -> void:
-	var args = GoobState3D.SetupArgs.new(
-		body_3d,
-		renderer_3d
-	)
+func setup(args: GoobState3D.SetupArgs) -> void:
 	for child in get_children():
 		if child is GoobState3D:
 			var state := child as GoobState3D

@@ -11,6 +11,7 @@ enum GoobState {
 }
 
 enum GameplayState {
+	CONFIGURATION,
 	GAME_START,
 	LEVEL_TRANSITION,
 	LEVEL_START,

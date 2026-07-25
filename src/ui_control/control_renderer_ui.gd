@@ -7,8 +7,13 @@ class_name ControlRendererUI
 
 var _circle_wipe_tween: Tween
 
+func block_view() -> void:
+	if (_circle_wipe_tween):
+		_circle_wipe_tween.kill()
+	_wipe_control.set_progress(1)
+
 func animate_circle_wipe_async(closed: bool, duration: float = 1) -> void:
-	if _circle_wipe_tween:
+	if (_circle_wipe_tween):
 		_circle_wipe_tween.kill()
 	_circle_wipe_tween = create_tween()
 	var current := _wipe_control.get_progress()

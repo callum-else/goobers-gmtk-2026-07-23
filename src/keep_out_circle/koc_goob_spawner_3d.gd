@@ -10,7 +10,10 @@ func _ready() -> void:
 	var positions := _calculate_spawn_positions()
 	for position in positions:
 		var goob = goob_scene.instantiate() as GoobBody3D
+		var body_frames = GoobState.get_random_body()
+		var body_color = GoobState.get_random_color()
 		add_child(goob)
+		goob.setup(body_frames, body_color)
 		goob.global_position = position
 
 func _calculate_spawn_positions() -> Array[Vector3]:

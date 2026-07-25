@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bnrqando14v58"]
 
-[ext_resource type="Script" uid="uid://bspsumblj2ehb" path="res://src/control_renderer/control_renderer_ui.gd" id="1_cwmvi"]
-[ext_resource type="Script" uid="uid://dfettodfjkr4v" path="res://src/control_renderer/level_duration_countdown_control.gd" id="1_qfmsa"]
+[ext_resource type="Script" uid="uid://bspsumblj2ehb" path="res://src/ui_control/control_renderer_ui.gd" id="1_cwmvi"]
+[ext_resource type="Script" uid="uid://dfettodfjkr4v" path="res://src/ui_control/level_duration_countdown_control.gd" id="1_qfmsa"]
 [ext_resource type="Shader" uid="uid://bchnqlvqfp745" path="res://pres/gameplay/border_wipe.gdshader" id="2_cwmvi"]
 [ext_resource type="LabelSettings" uid="uid://bjh0l60yvu740" path="res://pres/fonts/font_labels.tres" id="3_eny0t"]
-[ext_resource type="Script" uid="uid://wc7atdi6v4uw" path="res://src/control_renderer/level_start_countdown_control.gd" id="4_jiof0"]
+[ext_resource type="Script" uid="uid://wc7atdi6v4uw" path="res://src/ui_control/level_start_countdown_control.gd" id="4_jiof0"]
 [ext_resource type="FontFile" uid="uid://dw1sg45jbh65u" path="res://pres/fonts/Vividly-Regular.ttf" id="5_ixtql"]
 [ext_resource type="Shader" uid="uid://cgyghovbexoep" path="res://pres/gameplay/circle_wipe.gdshader" id="6_t4xsq"]
-[ext_resource type="Script" uid="uid://c6bv0rclp2vsu" path="res://src/control_renderer/level_transition_wipe_control.gd" id="7_eny0t"]
+[ext_resource type="Script" uid="uid://c6bv0rclp2vsu" path="res://src/ui_control/level_transition_wipe_control.gd" id="7_eny0t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65i0v"]
 shader = ExtResource("2_cwmvi")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cnckw3uqi3ivq" path="res://src/goob/goob_body_3d.gd" id="1_4hjme"]
 [ext_resource type="Script" uid="uid://hq3cj87obmb7" path="res://src/goob/goob_avoidance_3d.gd" id="2_8y71m"]
 [ext_resource type="Script" uid="uid://cbgv2ypudob0d" path="res://src/goob/goob_renderer_3d.gd" id="3_7k5rk"]
-[ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/circle_goob/circle_goob_frames.tres" id="4_lh8bf"]
+[ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="4_lh8bf"]
 [ext_resource type="SpriteFrames" uid="uid://bpa1p2r7flmwq" path="res://pres/eyes/eyes_frames.tres" id="5_fwt11"]
 [ext_resource type="Script" uid="uid://65y61rxo7dat" path="res://src/goob/state/goob_state_machine_3d.gd" id="6_ja6xd"]
 [ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="7_yrx76"]
@@ -21,11 +21,11 @@ bounce = 0.8
 height = 1.0
 radius = 1.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xjdva"]
-radius = 6.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_d30nk"]
 radius = 2.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xjdva"]
+radius = 6.0
 
 [node name="GoobBody3D" type="RigidBody3D" unique_id=160475722]
 collision_mask = 2
@@ -44,21 +44,12 @@ script = ExtResource("1_4hjme")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_qqtlv")
 
-[node name="GoobAvoidance3D" type="Area3D" parent="." unique_id=359930190]
-collision_layer = 0
-monitorable = false
-script = ExtResource("2_8y71m")
-metadata/_custom_type_script = "uid://hq3cj87obmb7"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobAvoidance3D" unique_id=1590653147]
-shape = SubResource("SphereShape3D_xjdva")
-
 [node name="GoobRenderer3D" type="Node3D" parent="." unique_id=452766076]
-transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0)
 script = ExtResource("3_7k5rk")
 
 [node name="BodySprite3D" type="AnimatedSprite3D" parent="GoobRenderer3D" unique_id=2109602750]
-modulate = Color(0.38039216, 0.24705882, 0.81960785, 1)
+modulate = Color(0.047058824, 0.03529412, 0.03137255, 1)
 axis = 1
 sprite_frames = ExtResource("4_lh8bf")
 animation = &"panic"
@@ -72,10 +63,8 @@ sprite_frames = ExtResource("5_fwt11")
 animation = &"open"
 autoplay = "open"
 
-[node name="GoobStateMachine3D" type="Node3D" parent="." unique_id=1896786131 node_paths=PackedStringArray("body_3d", "renderer_3d")]
+[node name="GoobStateMachine3D" type="Node3D" parent="." unique_id=1896786131]
 script = ExtResource("6_ja6xd")
-body_3d = NodePath("..")
-renderer_3d = NodePath("../GoobRenderer3D")
 starting_state = 3
 
 [node name="GoobGrabbedState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=1203789310]
@@ -111,6 +100,16 @@ script = ExtResource("11_y7kpv")
 target_radius = 15.0
 randomize_target_pos = true
 metadata/_custom_type_script = "uid://bt3etm0y2rjuk"
+
+[node name="GoobAvoidance3D" type="Area3D" parent="GoobStateMachine3D/GoobRunToPointState3D" unique_id=359930190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("2_8y71m")
+metadata/_custom_type_script = "uid://hq3cj87obmb7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunToPointState3D/GoobAvoidance3D" unique_id=1590653147]
+shape = SubResource("SphereShape3D_xjdva")
 
 [node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=1954647455]
 script = ExtResource("12_gwf8l")

@@ -8,6 +8,7 @@ const MIN_MOVE_VEL: float = 0.5
 @export var target_radius: float
 @export var randomize_target_pos: bool
 
+var _avoidance: GoobAvoidance3D
 var _args: GoobState3D.SetupArgs
 var _target_dist: float
 var _target_hit: bool = true
@@ -20,6 +21,7 @@ func get_id() -> Constants.GoobState:
 	return Constants.GoobState.RUN_TO_FIXED_POSITION
 
 func setup(args: GoobState3D.SetupArgs) -> void:
+	_avoidance = $GoobAvoidance3D
 	_args = args
 
 func enter() -> void:
@@ -44,7 +46,8 @@ func _apply_movement() -> void:
 	if (diff_len < _target_dist):
 		_target_hit = true
 		return
-	_args.body.apply_movement_force(target_diff.normalized() * MOVE_FORCE)
+	var calculated = _avoidance.apply_avoidance(target_diff.normalized() * MOVE_FORCE)
+	_args.body.apply_central_force(calculated)
 
 func _apply_animation() -> void:
 	var vel = Utilities.flatten_vector(_args.body.linear_velocity).length()

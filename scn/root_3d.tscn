@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccba457kctdg2"]
 
-[ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver.gd" id="1_0lpx0"]
+[ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver_node.gd" id="1_0lpx0"]
 [ext_resource type="PackedScene" uid="uid://bnrqando14v58" path="res://scn/control_renderer_ui.tscn" id="1_cn0cm"]
 [ext_resource type="Script" uid="uid://bff0x7pkkr3mb" path="res://src/gameplay/state/gameplay_transition_state_3d.gd" id="2_2mga5"]
 [ext_resource type="Script" uid="uid://dmq3ndihvebf7" path="res://src/gameplay/state/gameplay_state_machine_3d.gd" id="2_7tb7r"]
@@ -9,11 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
 [ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level.tscn" id="5_pwrtq"]
 [ext_resource type="Script" uid="uid://cvbgeq2xi2blk" path="res://src/gameplay/state/gameplay_level_state_3d.gd" id="7_u5bw3"]
+[ext_resource type="Script" uid="uid://dihj2carme58n" path="res://src/gameplay/state/gameplay_configuration_state_3d.gd" id="8_cxubq"]
+[ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="9_mwnnt"]
+[ext_resource type="SpriteFrames" uid="uid://np0dusl64kjh" path="res://pres/goobs/square_goob/square_goob_frames.tres" id="10_b3ktp"]
 [ext_resource type="Script" uid="uid://u0y117y300g5" path="res://src/gameplay/state/gameplay_gameover_state_3d.gd" id="10_urmxu"]
+[ext_resource type="SpriteFrames" uid="uid://0ylwrs53jq0q" path="res://pres/goobs/diamond_goob/diamond_goob_frames.tres" id="11_p8e5l"]
+[ext_resource type="SpriteFrames" uid="uid://bpxyfgitqoa4s" path="res://pres/goobs/triangle_goob/triangle_goob_frames.tres" id="12_qr3ev"]
 
 [sub_resource type="Environment" id="Environment_2i45h"]
 
 [node name="Root3D" type="Node3D" unique_id=293381945]
+
+[node name="InputReceiverNode" type="Node" parent="." unique_id=1287798128 node_paths=PackedStringArray("camera")]
+script = ExtResource("1_0lpx0")
+camera = NodePath("../Camera3D")
 
 [node name="ControlRendererUI" parent="." unique_id=1067794293 instance=ExtResource("1_cn0cm")]
 
@@ -22,10 +31,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5
 environment = SubResource("Environment_2i45h")
 projection = 1
 size = 75.0
-
-[node name="InputReceiver" type="Node" parent="." unique_id=1287798128 node_paths=PackedStringArray("camera")]
-script = ExtResource("1_0lpx0")
-camera = NodePath("../Camera3D")
 
 [node name="CameraToWorldRaycast3D" type="Node3D" parent="." unique_id=1556988710 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 50, 0)
@@ -45,7 +50,17 @@ levels = Dictionary[int, PackedScene]({
 script = ExtResource("2_7tb7r")
 control_renderer = NodePath("../ControlRendererUI")
 level_manager = NodePath("../LevelManager3D")
-starting_state = 1
+
+[node name="GameplayConfigurationState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=1565891212]
+script = ExtResource("8_cxubq")
+goob_body_frames = Array[SpriteFrames]([ExtResource("9_mwnnt"), ExtResource("10_b3ktp"), ExtResource("11_p8e5l"), ExtResource("12_qr3ev")])
+goob_body_colors = Array[Color]([Color(0.9529412, 0.37254903, 0.05882353, 1), Color(0.19215687, 0.8, 0.3647059, 1), Color(0, 0.5568628, 0.9529412, 1), Color(0.38039216, 0.24705882, 0.81960785, 1), Color(0.95, 0.057, 0.057, 1)])
+metadata/_custom_type_script = "uid://dihj2carme58n"
+
+[node name="GameplayConfigurationState3D" type="Node3D" parent="GameplayStateMachine3D/GameplayConfigurationState3D" unique_id=284947443]
+script = ExtResource("8_cxubq")
+goob_body_frames = Array[SpriteFrames]([ExtResource("9_mwnnt")])
+metadata/_custom_type_script = "uid://dihj2carme58n"
 
 [node name="GameplayTransitionState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=2043000946]
 script = ExtResource("2_2mga5")

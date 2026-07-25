@@ -3,9 +3,14 @@ class_name GoobRenderer3D
 
 const MIN_SCALE: float = 1
 const MAX_SCALE: float = 1.8
+const MIN_ROT: float = 5.0
+const MAX_ROT: float = 15.0
 
 @onready var _body_spr: AnimatedSprite3D = $BodySprite3D
 @onready var _eyes_spr: AnimatedSprite3D = $EyeSprite3D
+
+func _ready() -> void:
+	global_rotation_degrees.x = randf_range(MIN_ROT, MAX_ROT)
 
 func _physics_process(_delta: float) -> void:
 	var pos_scale: float = clamp(
@@ -16,6 +21,12 @@ func _physics_process(_delta: float) -> void:
 
 func _get_rand_speed_offset() -> float:
 	return randf_range(0.9, 1.1)
+
+func set_body_frames(frames: SpriteFrames) -> void:
+	_body_spr.sprite_frames = frames
+
+func set_body_color(color: Color) -> void:
+	_body_spr.modulate = color
 
 func freeze() -> void:
 	_body_spr.pause()

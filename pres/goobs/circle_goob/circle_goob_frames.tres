@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bd1dyf4dmpcpm"]
+
+[ext_resource type="Texture2D" uid="uid://dadt7c8vldj1v" path="res://pres/goobs/circle_goob/tex/circle_goob_idle_1.png" id="1_jqaes"]
+[ext_resource type="Texture2D" uid="uid://blbc6jpsjbvio" path="res://pres/goobs/circle_goob/tex/circle_goob_idle_2.png" id="2_sh545"]
+[ext_resource type="Texture2D" uid="uid://k2wohewysout" path="res://pres/goobs/circle_goob/tex/circle_goob_panic_1.png" id="3_p4i3t"]
+[ext_resource type="Texture2D" uid="uid://jpu2tskvh0v" path="res://pres/goobs/circle_goob/tex/circle_goob_run_1.png" id="3_yqooi"]
+[ext_resource type="Texture2D" uid="uid://d0ru6g07mtob4" path="res://pres/goobs/circle_goob/tex/circle_goob_panic_2.png" id="4_c57ba"]
+[ext_resource type="Texture2D" uid="uid://cni1otxbr0w65" path="res://pres/goobs/circle_goob/tex/circle_goob_run_2.png" id="4_m5rvs"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jqaes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sh545")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p4i3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c57ba")
+}],
+"loop": true,
+"name": &"panic",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yqooi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m5rvs")
+}],
+"loop": true,
+"name": &"run",
+"speed": 2.5
+}]

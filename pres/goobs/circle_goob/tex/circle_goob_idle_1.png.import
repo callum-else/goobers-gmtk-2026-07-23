@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cni1otxbr0w65"
-path.s3tc="res://.godot/imported/circle_goob_run_2.png-ea1f716a91568029b347fc1992e61864.s3tc.ctex"
+uid="uid://dadt7c8vldj1v"
+path.s3tc="res://.godot/imported/circle_goob_idle_1.png-4c1b68a00a755772c3ec1377e91876f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://pres/circle_goob/tex/circle_goob_run_2.png"
-dest_files=["res://.godot/imported/circle_goob_run_2.png-ea1f716a91568029b347fc1992e61864.s3tc.ctex"]
+source_file="res://pres/goobs/circle_goob/tex/circle_goob_idle_1.png"
+dest_files=["res://.godot/imported/circle_goob_idle_1.png-4c1b68a00a755772c3ec1377e91876f9.s3tc.ctex"]
 
 [params]
 
