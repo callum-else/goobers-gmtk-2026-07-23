@@ -11,6 +11,4 @@ func _exit_tree() -> void:
 func _on_level_timeout() -> void:
 	var bodies := _area.get_overlapping_bodies()
 	if (bodies.is_empty()):
-		print("SUCCESS!!!")
-	else:
-		print("FAIL :(")
+		LevelState.set_level_completed(Constants.LevelId.KEEP_OUT_CIRCLE)

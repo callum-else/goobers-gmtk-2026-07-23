@@ -17,7 +17,6 @@ func _calculate_spawn_positions() -> Array[Vector3]:
 	var positions: Array[Vector3] = []
 	if goob_count <= 0:
 		return positions
-
 	var angle_step := TAU / goob_count
 	var angle_offset := randf() * TAU
 	for i in range(goob_count):

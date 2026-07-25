@@ -1,9 +1,11 @@
 extends Node
 
-class State:
-	var succeeded: bool
+var _completed_levels: Array[Constants.LevelId] = []
 
-var _level_states: Dictionary[Constants.LevelId, State] = {}
+func get_completed_levels() -> Array[Constants.LevelId]:
+	return _completed_levels
 
-func set_success_state(id: Constants.LevelId, success: bool) -> void:
-	_level_states[id].succeeded = success
+func set_level_completed(id: Constants.LevelId) -> void:
+	if (_completed_levels.count(id) != 0):
+		return
+	_completed_levels.append(id)

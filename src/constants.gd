@@ -10,6 +10,13 @@ enum GoobState {
 	FREEZE
 }
 
+enum GameplayState {
+	GAME_START,
+	LEVEL_TRANSITION,
+	LEVEL_START,
+	GAME_OVER
+}
+
 enum LevelId {
 	KEEP_OUT_CIRCLE
 }

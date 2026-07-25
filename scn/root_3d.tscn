@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://ccba457kctdg2"]
 
 [ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver.gd" id="1_0lpx0"]
+[ext_resource type="PackedScene" uid="uid://bnrqando14v58" path="res://scn/control_renderer_ui.tscn" id="1_cn0cm"]
+[ext_resource type="Script" uid="uid://bff0x7pkkr3mb" path="res://src/gameplay/state/gameplay_transition_state_3d.gd" id="2_2mga5"]
+[ext_resource type="Script" uid="uid://dmq3ndihvebf7" path="res://src/gameplay/state/gameplay_state_machine_3d.gd" id="2_7tb7r"]
 [ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
-[ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle_level.tscn" id="4_2mga5"]
+[ext_resource type="Script" uid="uid://dn4odk3gmromw" path="res://src/gameplay/level/level_manager_3d.gd" id="4_u5bw3"]
+[ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
+[ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level.tscn" id="5_pwrtq"]
+[ext_resource type="Script" uid="uid://cvbgeq2xi2blk" path="res://src/gameplay/state/gameplay_level_state_3d.gd" id="7_u5bw3"]
+[ext_resource type="Script" uid="uid://u0y117y300g5" path="res://src/gameplay/state/gameplay_gameover_state_3d.gd" id="10_urmxu"]
 
 [sub_resource type="Environment" id="Environment_2i45h"]
 
 [node name="Root3D" type="Node3D" unique_id=293381945]
+
+[node name="ControlRendererUI" parent="." unique_id=1067794293 instance=ExtResource("1_cn0cm")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=126601292]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 50, 0)
@@ -25,6 +34,33 @@ camera = NodePath("../Camera3D")
 collision_mask = 32768
 metadata/_custom_type_script = "uid://bbvmuefboahto"
 
-[node name="Levels" type="Node3D" parent="." unique_id=1203793433]
+[node name="LevelManager3D" type="Node3D" parent="." unique_id=78056816]
+script = ExtResource("4_u5bw3")
+win_level = ExtResource("5_c1aws")
+levels = Dictionary[int, PackedScene]({
+0: ExtResource("5_pwrtq")
+})
 
-[node name="KeepOutCircleLevel" parent="Levels" unique_id=1821666841 instance=ExtResource("4_2mga5")]
+[node name="GameplayStateMachine3D" type="Node3D" parent="." unique_id=1122003603 node_paths=PackedStringArray("control_renderer", "level_manager")]
+script = ExtResource("2_7tb7r")
+control_renderer = NodePath("../ControlRendererUI")
+level_manager = NodePath("../LevelManager3D")
+starting_state = 1
+
+[node name="GameplayTransitionState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=2043000946]
+script = ExtResource("2_2mga5")
+
+[node name="MinimumTransitionWaitTimer" type="Timer" parent="GameplayStateMachine3D/GameplayTransitionState3D" unique_id=1559744232]
+wait_time = 2.0
+one_shot = true
+
+[node name="GameplayLevelState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=873971547]
+script = ExtResource("7_u5bw3")
+
+[node name="TimeoutHangTimer" type="Timer" parent="GameplayStateMachine3D/GameplayLevelState3D" unique_id=2061482773]
+wait_time = 2.0
+one_shot = true
+
+[node name="GameplayGameOverState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=1141525307]
+script = ExtResource("10_urmxu")
+metadata/_custom_type_script = "uid://u0y117y300g5"

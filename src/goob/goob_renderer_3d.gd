@@ -13,10 +13,6 @@ func _physics_process(_delta: float) -> void:
 		MIN_SCALE, MAX_SCALE
 	)
 	scale = Vector3(pos_scale, pos_scale, pos_scale)
-	var abs_position: Vector3 = global_position.abs()
-	var priority := int(max(abs_position.x + abs_position.z, 100.0))
-	_body_spr.render_priority = priority
-	_eyes_spr.render_priority = priority
 
 func _get_rand_speed_offset() -> float:
 	return randf_range(0.9, 1.1)

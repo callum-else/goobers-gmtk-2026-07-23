@@ -1,11 +1,10 @@
-extends Node3D
+extends Level3D
 class_name KeepOutCircleLevel
 
 func _ready() -> void:
 	Events.on_level_start.connect(_on_level_start)
 	Events.on_level_timeout.connect(_on_level_timeout)
 	Events.update_raycast_input.emit(false)
-	Events.on_level_ready.emit()
 
 func _exit_tree() -> void:
 	Events.on_level_start.disconnect(_on_level_start)

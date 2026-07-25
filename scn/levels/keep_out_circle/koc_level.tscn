@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b2xvnon4w45xk" path="res://src/keep_out_circle/koc_goob_spawner_3d.gd" id="1_g7vm0"]
 [ext_resource type="Script" uid="uid://c5tjttotcblqb" path="res://src/keep_out_circle/koc_level_3d.gd" id="1_xjxy4"]
-[ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle_goob.tscn" id="2_xjxy4"]
+[ext_resource type="Resource" uid="uid://da0uayc5kr0pt" path="res://scn/levels/keep_out_circle/koc_level_config.tres" id="2_1y2yt"]
+[ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle/koc_goob.tscn" id="2_xjxy4"]
 [ext_resource type="Script" uid="uid://brn4g85jurfey" path="res://src/keep_out_circle/koc_objective_3d.gd" id="4_jjgpa"]
 [ext_resource type="Shader" uid="uid://cptn6e35yyq1k" path="res://pres/keep_out_circle/warbly_circle.gdshader" id="4_tmemk"]
+[ext_resource type="Texture2D" uid="uid://dwlbmkogusk3h" path="res://pres/keep_out_circle/tex/keep_out.png" id="7_cxehn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oug3g"]
 size = Vector3(500, 1, 500)
@@ -25,8 +27,10 @@ size = Vector2(30, 30)
 [sub_resource type="SphereShape3D" id="SphereShape3D_xjxy4"]
 radius = 15.0
 
-[node name="KeepOutCircleLevel3D" type="Node3D" unique_id=1821666841]
+[node name="KeepOutCircleLevel3D" type="Node3D" unique_id=475537562]
 script = ExtResource("1_xjxy4")
+level_config = ExtResource("2_1y2yt")
+metadata/_custom_type_script = "uid://d3wvrcubdjd5a"
 
 [node name="GoobSpawner3D" type="Node3D" parent="." unique_id=1082646582]
 script = ExtResource("1_g7vm0")
@@ -46,6 +50,7 @@ shape = SubResource("BoxShape3D_oug3g")
 script = ExtResource("4_jjgpa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objective3D" unique_id=1339118732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("ShaderMaterial_jjgpa")
 mesh = SubResource("PlaneMesh_1y2yt")
 
@@ -55,3 +60,8 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objective3D/Area3D" unique_id=471078900]
 shape = SubResource("SphereShape3D_xjxy4")
+
+[node name="Sprite3D" type="Sprite3D" parent="Objective3D" unique_id=103693953]
+transform = Transform3D(0.9986295, -0.009088044, -0.051540855, 0, 0.9848077, -0.17364818, 0.05233596, 0.17341019, 0.98345804, 13, 0, -18)
+axis = 1
+texture = ExtResource("7_cxehn")
