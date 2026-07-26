@@ -16,7 +16,7 @@ func enter() -> void:
 	_args.control_renderer.block_view()
 	GoobState.set_body_frames(goob_body_frames)
 	GoobState.set_body_colors(goob_body_colors)
-	request_state.emit(Constants.GameplayState.LEVEL_TRANSITION)
+	request_state.emit(Constants.GameplayState.MAIN_MENU)
 
 func exit() -> void:
 	pass

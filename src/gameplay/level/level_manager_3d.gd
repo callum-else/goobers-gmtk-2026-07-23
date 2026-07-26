@@ -2,6 +2,7 @@ extends Node3D
 class_name LevelManager3D
 
 @export var win_level: PackedScene
+@export var main_menu_level: PackedScene
 @export var levels: Dictionary[Constants.LevelId, PackedScene]
 
 var _ordered_levels: Array[Types.LevelData] = []
@@ -54,3 +55,6 @@ func get_current_level_id() -> Constants.LevelId:
 
 func goto_win_level() -> void:
 	_change_level(win_level)
+
+func goto_main_menu_level() -> void:
+	_current_level = _change_level(main_menu_level)

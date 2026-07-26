@@ -41,6 +41,7 @@ modulate = Color(0.047058824, 0.03529412, 0.03137255, 1)
 pixel_size = 0.075
 axis = 1
 sprite_frames = ExtResource("7_ytown")
+autoplay = "default"
 frame_progress = 0.40888056
 
 [node name="Area3D" type="Area3D" parent="Objective3D" unique_id=1503358139]

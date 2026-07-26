@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bp842di1qed1y"]
+
+[ext_resource type="PackedScene" uid="uid://ba4t77gnbhmh7" path="res://scn/goob/base_goob_3d.tscn" id="1_jrw1k"]
+[ext_resource type="Script" uid="uid://cis3scu8ge52y" path="res://src/goob/state/goob_run_state_3d.gd" id="2_5y7im"]
+[ext_resource type="Script" uid="uid://hq3cj87obmb7" path="res://src/goob/goob_avoidance_3d.gd" id="3_kk3h7"]
+[ext_resource type="Script" uid="uid://chlw2u2ly4oka" path="res://src/goob/goob_run_limiter_3d.gd" id="4_fynde"]
+[ext_resource type="Script" uid="uid://d1ok0ji2renwp" path="res://src/limits/limits_listener_3d.gd" id="5_rspht"]
+[ext_resource type="Script" uid="uid://dyc3n4vopw1al" path="res://src/goob/state/goob_clicked_state_3d.gd" id="6_wnq1h"]
+[ext_resource type="Script" uid="uid://brgymmepf8hmc" path="res://src/camera_to_world_raycast/camera_to_world_raycast_listener_3d.gd" id="7_ca2qo"]
+[ext_resource type="Script" uid="uid://c5auw606fba66" path="res://src/goob/state/goob_button_state_3d.gd" id="8_hyh20"]
+[ext_resource type="Script" uid="uid://su8myajtabck" path="res://src/goob/state/goob_freeze_state_3d.gd" id="9_qpr2i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hyh20"]
+radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e772r"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gp4k1"]
+radius = 2.5
+
+[node name="GoobBody3D" unique_id=2107450553 instance=ExtResource("1_jrw1k")]
+
+[node name="GoobStateMachine3D" parent="." index="2" unique_id=560916213]
+starting_state = 7
+
+[node name="GoobRunState3D" type="Node3D" parent="GoobStateMachine3D" index="0" unique_id=182547323]
+script = ExtResource("2_5y7im")
+metadata/_custom_type_script = "uid://cis3scu8ge52y"
+
+[node name="GoobAvoidance3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D" index="0" unique_id=1938976767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("3_kk3h7")
+metadata/_custom_type_script = "uid://hq3cj87obmb7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobAvoidance3D" index="0" unique_id=1682278651]
+shape = SubResource("SphereShape3D_hyh20")
+
+[node name="GoobRunLimiter3D" type="Node3D" parent="GoobStateMachine3D/GoobRunState3D" index="1" unique_id=1166036668]
+script = ExtResource("4_fynde")
+metadata/_custom_type_script = "uid://chlw2u2ly4oka"
+
+[node name="LimitsListener3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D" index="0" unique_id=580307627]
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_rspht")
+metadata/_custom_type_script = "uid://d1ok0ji2renwp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D/LimitsListener3D" index="0" unique_id=184086681]
+shape = SubResource("SphereShape3D_e772r")
+
+[node name="GoobClickedState3D" type="Node3D" parent="GoobStateMachine3D" index="1" unique_id=2006207876]
+script = ExtResource("6_wnq1h")
+on_clicked_state = 10
+clicked_state_priority = 10
+allowed_states = Array[int]([7])
+metadata/_custom_type_script = "uid://dyc3n4vopw1al"
+
+[node name="GoobClickedListener3D" type="Area3D" parent="GoobStateMachine3D/GoobClickedState3D" index="0" unique_id=297306374]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+script = ExtResource("7_ca2qo")
+metadata/_custom_type_script = "uid://brgymmepf8hmc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobClickedState3D/GoobClickedListener3D" index="0" unique_id=1635573697]
+shape = SubResource("SphereShape3D_gp4k1")
+
+[node name="GoobButtonState3D" type="Node3D" parent="GoobStateMachine3D" index="2" unique_id=63740581]
+script = ExtResource("8_hyh20")
+metadata/_custom_type_script = "uid://c5auw606fba66"
+
+[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" index="3" unique_id=1834961529]
+script = ExtResource("9_qpr2i")
+freeze_ridigbody = true
+metadata/_custom_type_script = "uid://su8myajtabck"

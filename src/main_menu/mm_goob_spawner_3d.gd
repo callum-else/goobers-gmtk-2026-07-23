@@ -1,5 +1,5 @@
 extends Node3D
-class_name KeepOutCircleGoobSpawner3D
+class_name MainMenuGoobSpawner3D
 
 @export var goob_scene: PackedScene
 @export var goob_count: int

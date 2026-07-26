@@ -1,0 +1,11 @@
+[gd_resource type="AnimatedTexture" format=3 uid="uid://b1ucd1tdqekqt"]
+
+[ext_resource type="Texture2D" uid="uid://dod2ll8kw6rkj" path="res://pres/main_menu/tex/play_button_1.png" id="1_8ef2t"]
+[ext_resource type="Texture2D" uid="uid://iclyfcrw614" path="res://pres/main_menu/tex/play_button_2.png" id="2_4eleh"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_8ef2t")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("2_4eleh")
+frame_1/duration = 0.3

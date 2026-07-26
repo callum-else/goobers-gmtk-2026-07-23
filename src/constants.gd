@@ -10,7 +10,12 @@ enum GoobState {
 	FREEZE,
 	RUN,
 	CLICKED,
-	TAGGED
+	TAGGED,
+	BUTTON
+}
+
+enum GoobButtonEvent {
+	MAIN_MENU
 }
 
 enum GameplayState {
@@ -18,7 +23,8 @@ enum GameplayState {
 	GAME_START,
 	LEVEL_TRANSITION,
 	LEVEL_START,
-	GAME_OVER
+	GAME_OVER,
+	MAIN_MENU
 }
 
 enum LevelId {

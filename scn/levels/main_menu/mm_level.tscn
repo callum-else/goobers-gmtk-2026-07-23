@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cyfbjnuepio4i"]
+
+[ext_resource type="Script" uid="uid://85flbigcikls" path="res://src/main_menu/mm_level_3d.gd" id="1_ciuyd"]
+[ext_resource type="FontFile" uid="uid://dw1sg45jbh65u" path="res://pres/fonts/Vividly-Regular.ttf" id="1_pf1mt"]
+[ext_resource type="Script" uid="uid://b3u4rl8v2yf3u" path="res://src/main_menu/mm_goob_spawner_3d.gd" id="2_k8bio"]
+[ext_resource type="Script" uid="uid://4yeklgcem285" path="res://src/limits/limits_area_3d.gd" id="3_ciuyd"]
+[ext_resource type="PackedScene" uid="uid://bp842di1qed1y" path="res://scn/levels/main_menu/mm_goob_3d.tscn" id="3_k8bio"]
+
+[sub_resource type="Theme" id="Theme_p6qft"]
+default_font = ExtResource("1_pf1mt")
+default_font_size = 100
+
+[sub_resource type="Theme" id="Theme_b1v6w"]
+default_font = ExtResource("1_pf1mt")
+default_font_size = 50
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bb4gb"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4hdp"]
+size = Vector3(40, 40, 40)
+
+[node name="MainMenuLevel" type="Node3D" unique_id=996507085]
+script = ExtResource("1_ciuyd")
+
+[node name="UIControl" type="Control" parent="." unique_id=1062854733]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIControl" unique_id=622877435]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="UIControl/VBoxContainer" unique_id=2074825932]
+layout_mode = 2
+theme = SubResource("Theme_p6qft")
+theme_override_colors/default_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
+theme_override_colors/font_outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)
+theme_override_constants/outline_size = 20
+bbcode_enabled = true
+text = "[tornado radius=2 freq=3]goobers[/tornado]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel" type="RichTextLabel" parent="UIControl/VBoxContainer" unique_id=1819500024]
+layout_mode = 2
+theme = SubResource("Theme_b1v6w")
+theme_override_colors/default_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
+theme_override_colors/font_outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)
+theme_override_constants/outline_size = 20
+bbcode_enabled = true
+text = "[wave amp=8]a jam by geppy[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoobSpawner3D" type="Node3D" parent="." unique_id=56013594]
+script = ExtResource("2_k8bio")
+goob_scene = ExtResource("3_k8bio")
+goob_count = 10
+min_distribution_distance = 15.0
+max_distribution_distance = 30.0
+
+[node name="Floor3D" type="StaticBody3D" parent="." unique_id=1630501506]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3D" unique_id=552265647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_bb4gb")
+
+[node name="Limits3D" type="Area3D" parent="." unique_id=1543098294]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+script = ExtResource("3_ciuyd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Limits3D" unique_id=490494458]
+shape = SubResource("BoxShape3D_n4hdp")

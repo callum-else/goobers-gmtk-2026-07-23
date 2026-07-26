@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dn4odk3gmromw" path="res://src/gameplay/level/level_manager_3d.gd" id="4_u5bw3"]
 [ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
 [ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level_3d.tscn" id="5_pwrtq"]
+[ext_resource type="PackedScene" uid="uid://cyfbjnuepio4i" path="res://scn/levels/main_menu/mm_level.tscn" id="6_788jm"]
 [ext_resource type="PackedScene" uid="uid://g82uko4ka4ts" path="res://scn/levels/no_running/nr_level_3d.tscn" id="6_b3ktp"]
 [ext_resource type="Script" uid="uid://cvbgeq2xi2blk" path="res://src/gameplay/state/gameplay_level_state_3d.gd" id="7_u5bw3"]
 [ext_resource type="Script" uid="uid://dihj2carme58n" path="res://src/gameplay/state/gameplay_configuration_state_3d.gd" id="8_cxubq"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" uid="uid://u0y117y300g5" path="res://src/gameplay/state/gameplay_gameover_state_3d.gd" id="10_urmxu"]
 [ext_resource type="SpriteFrames" uid="uid://0ylwrs53jq0q" path="res://pres/goobs/diamond_goob/diamond_goob_frames.tres" id="11_p8e5l"]
 [ext_resource type="SpriteFrames" uid="uid://bpxyfgitqoa4s" path="res://pres/goobs/triangle_goob/triangle_goob_frames.tres" id="12_qr3ev"]
+[ext_resource type="Script" uid="uid://dgc10ecqjingv" path="res://src/gameplay/state/gameplay_mainmenu_state_3d.gd" id="15_5phut"]
 
 [sub_resource type="Environment" id="Environment_2i45h"]
 
@@ -44,6 +46,7 @@ metadata/_custom_type_script = "uid://bbvmuefboahto"
 [node name="LevelManager3D" type="Node3D" parent="." unique_id=78056816]
 script = ExtResource("4_u5bw3")
 win_level = ExtResource("5_c1aws")
+main_menu_level = ExtResource("6_788jm")
 levels = Dictionary[int, PackedScene]({
 0: ExtResource("5_pwrtq"),
 1: ExtResource("6_b3ktp"),
@@ -65,6 +68,9 @@ metadata/_custom_type_script = "uid://dihj2carme58n"
 script = ExtResource("8_cxubq")
 goob_body_frames = Array[SpriteFrames]([ExtResource("9_mwnnt")])
 metadata/_custom_type_script = "uid://dihj2carme58n"
+
+[node name="GameplayMainMenuState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=843496769]
+script = ExtResource("15_5phut")
 
 [node name="GameplayTransitionState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=2043000946]
 script = ExtResource("2_2mga5")

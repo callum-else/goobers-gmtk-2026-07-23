@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_jpj1j")
-instruction = "STAY STILL!"
+instruction = "NO RUNNING!"
 metadata/_custom_type_script = "uid://b77b40oqshwt8"
