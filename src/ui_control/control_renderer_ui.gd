@@ -30,8 +30,8 @@ func reset_level_anims(full_clear: bool = false) -> void:
 	if (not full_clear):
 		_duration_control.enable_border()
 
-func animate_level_start_async() -> void:
-	await _start_control.wait_for_timeout_async()
+func animate_level_start_async(instruction: String) -> void:
+	await _start_control.wait_for_timeout_async(instruction)
 
 func animate_level_duration_async(duration: float) -> void:
 	_duration_control.enable_label(str(ceili(duration)))

@@ -14,7 +14,7 @@ func get_id() -> Constants.GoobState:
 
 func setup(args: GoobState3D.SetupArgs) -> void:
 	_args = args
-	Events.on_level_timeout.connect(_on_level_timeout)
+	Events.freeze_goobs.connect(_on_freeze_goobs)
 
 func enter() -> void:
 	if (freeze_ridigbody):
@@ -23,7 +23,7 @@ func enter() -> void:
 		_args.renderer.freeze()
 
 func exit() -> void:
-	Events.on_level_timeout.disconnect(_on_level_timeout)
+	Events.freeze_goobs.disconnect(_on_freeze_goobs)
 
-func _on_level_timeout() -> void:
-	request_state.emit(Constants.GoobState.FREEZE, false)
+func _on_freeze_goobs(can_transition: bool) -> void:
+	request_state.emit(Constants.GoobState.FREEZE, can_transition)

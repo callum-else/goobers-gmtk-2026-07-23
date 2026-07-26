@@ -9,6 +9,10 @@ func _exit_tree() -> void:
 	Events.on_level_timeout.disconnect(_on_level_timeout)
 
 func _on_level_timeout() -> void:
+	_check_completed_state()
+	Events.freeze_goobs.emit(false)
+
+func _check_completed_state() -> void:
 	for goob in spawner.get_goobs():
 		if (goob.get_current_state() == Constants.GoobState.RUN):
 			return

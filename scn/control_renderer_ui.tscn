@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bspsumblj2ehb" path="res://src/ui_control/control_renderer_ui.gd" id="1_cwmvi"]
 [ext_resource type="Script" uid="uid://dfettodfjkr4v" path="res://src/ui_control/level_duration_countdown_control.gd" id="1_qfmsa"]
 [ext_resource type="Shader" uid="uid://bchnqlvqfp745" path="res://pres/gameplay/border_wipe.gdshader" id="2_cwmvi"]
-[ext_resource type="LabelSettings" uid="uid://bjh0l60yvu740" path="res://pres/fonts/font_labels.tres" id="3_eny0t"]
 [ext_resource type="Script" uid="uid://wc7atdi6v4uw" path="res://src/ui_control/level_start_countdown_control.gd" id="4_jiof0"]
 [ext_resource type="FontFile" uid="uid://dw1sg45jbh65u" path="res://pres/fonts/Vividly-Regular.ttf" id="5_ixtql"]
 [ext_resource type="Shader" uid="uid://cgyghovbexoep" path="res://pres/gameplay/circle_wipe.gdshader" id="6_t4xsq"]
@@ -15,8 +14,9 @@ shader_parameter/border_thickness_px = 10.000000475
 shader_parameter/clockwise_mode = true
 shader_parameter/border_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ll25u"]
-content_margin_top = 10.0
+[sub_resource type="Theme" id="Theme_aw2xy"]
+default_font = ExtResource("5_ixtql")
+default_font_size = 104
 
 [sub_resource type="LabelSettings" id="LabelSettings_qsua4"]
 font = ExtResource("5_ixtql")
@@ -56,21 +56,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelDurationCountdownLabel" type="Label" parent="LevelDurationCountdownControl" unique_id=1825028276]
+[node name="LevelDurationCountdownLabel" type="RichTextLabel" parent="LevelDurationCountdownControl" unique_id=68046460]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -29.0
-offset_right = 29.0
-offset_bottom = 77.0
+offset_left = -197.5
+offset_right = 197.5
+offset_bottom = 92.0
 grow_horizontal = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ll25u")
-text = "10"
-label_settings = ExtResource("3_eny0t")
+theme = SubResource("Theme_aw2xy")
+theme_override_colors/default_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
+theme_override_colors/font_outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)
+theme_override_constants/outline_size = 20
+bbcode_enabled = true
+text = "[shake rate=10 level=5]10[/shake]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="LevelDurationTimer" type="Timer" parent="LevelDurationCountdownControl" unique_id=1260127601]
 wait_time = 15.0

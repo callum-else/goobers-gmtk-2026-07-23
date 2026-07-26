@@ -80,7 +80,7 @@ shape = SubResource("SphereShape3D_cmgyr")
 [node name="GoobClickedState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=2079649296]
 script = ExtResource("7_kfxpk")
 on_clicked_state = 2
-allowed_states = Array[int]([7])
+allowed_states = Array[int]([7, 2])
 metadata/_custom_type_script = "uid://dyc3n4vopw1al"
 
 [node name="GoobClickedListener3D" type="Area3D" parent="GoobStateMachine3D/GoobClickedState3D" unique_id=107449727]
@@ -100,7 +100,7 @@ min_confused_timeout = 5.0
 max_confuded_timeout = 8.0
 metadata/_custom_type_script = "uid://bbbdibdwvm4j5"
 
-[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=1534208928]
+[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=990530523]
 script = ExtResource("10_cmgyr")
 freeze_ridigbody = true
 metadata/_custom_type_script = "uid://su8myajtabck"
