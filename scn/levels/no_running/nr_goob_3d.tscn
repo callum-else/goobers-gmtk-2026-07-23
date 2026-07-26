@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bbbdibdwvm4j5" path="res://src/goob/state/goob_confused_state_3d.gd" id="4_q0npy"]
 [ext_resource type="Script" uid="uid://cis3scu8ge52y" path="res://src/goob/state/goob_run_state_3d.gd" id="5_wodmy"]
 [ext_resource type="Script" uid="uid://hq3cj87obmb7" path="res://src/goob/goob_avoidance_3d.gd" id="6_aias1"]
+[ext_resource type="Script" uid="uid://chlw2u2ly4oka" path="res://src/goob/goob_run_limiter_3d.gd" id="6_kuf2e"]
 [ext_resource type="Script" uid="uid://d1ok0ji2renwp" path="res://src/limits/limits_listener_3d.gd" id="6_qhypy"]
 [ext_resource type="Script" uid="uid://dyc3n4vopw1al" path="res://src/goob/state/goob_clicked_state_3d.gd" id="7_kfxpk"]
 [ext_resource type="Script" uid="uid://brgymmepf8hmc" path="res://src/camera_to_world_raycast/camera_to_world_raycast_listener_3d.gd" id="7_tjcin"]
@@ -19,11 +20,11 @@ bounce = 0.8
 height = 1.0
 radius = 1.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wodmy"]
-radius = 1.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_cmgyr"]
 radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wodmy"]
+radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aias1"]
 radius = 2.5
@@ -57,16 +58,6 @@ metadata/_custom_type_script = "uid://65y61rxo7dat"
 script = ExtResource("5_wodmy")
 metadata/_custom_type_script = "uid://cis3scu8ge52y"
 
-[node name="LimitsListener3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D" unique_id=1761988871]
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-script = ExtResource("6_qhypy")
-metadata/_custom_type_script = "uid://d1ok0ji2renwp"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/LimitsListener3D" unique_id=287631779]
-shape = SubResource("SphereShape3D_wodmy")
-
 [node name="GoobAvoidance3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D" unique_id=130199117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 0
@@ -76,6 +67,20 @@ metadata/_custom_type_script = "uid://hq3cj87obmb7"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobAvoidance3D" unique_id=1879559034]
 shape = SubResource("SphereShape3D_cmgyr")
+
+[node name="GoobRunLimiter3D" type="Node3D" parent="GoobStateMachine3D/GoobRunState3D" unique_id=1635761938]
+script = ExtResource("6_kuf2e")
+metadata/_custom_type_script = "uid://chlw2u2ly4oka"
+
+[node name="LimitsListener3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D" unique_id=1761988871]
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
+script = ExtResource("6_qhypy")
+metadata/_custom_type_script = "uid://d1ok0ji2renwp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D/LimitsListener3D" unique_id=287631779]
+shape = SubResource("SphereShape3D_wodmy")
 
 [node name="GoobClickedState3D" type="Node3D" parent="GoobStateMachine3D" unique_id=2079649296]
 script = ExtResource("7_kfxpk")

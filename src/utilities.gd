@@ -20,3 +20,6 @@ static func get_radial_spawn_positions(
 		var radius := randf_range(min_distance, max_distance)
 		positions.append(Vector3(cos(angle) * radius, height, sin(angle) * radius))
 	return positions
+
+static func get_random_direction() -> Vector3:
+	return Vector3.FORWARD.rotated(Vector3.UP, randf() * TAU)
