@@ -16,14 +16,15 @@ func enter() -> void:
 	var level_3d := _args.level_manager.get_current_level()
 	var config := level_3d.level_config
 	await _args.control_renderer.animate_circle_wipe_async(false)
-	Events.trigger_audio.emit(Constants.Audio.COUNTDOWN_TIMER, true)
+	Events.trigger_sfx.emit(Constants.SFX.COUNTDOWN_TIMER)
 	await _args.control_renderer.animate_level_start_async(
 		config.instruction)
-	Events.trigger_audio.emit(Constants.Audio.LEVEL_MUSIC, true)
+	Events.trigger_music.emit(Constants.Music.LEVEL_MUSIC)
 	Events.on_level_start.emit()
 	await _args.control_renderer.animate_level_duration_async(
 		config.level_duration)
 	Events.on_level_timeout.emit()
+	Events.trigger_sfx.emit(Constants.SFX.LEVEL_FINISH)
 	_timeout_hang.start()
 	await _timeout_hang.timeout
 	request_state.emit(Constants.GameplayState.LEVEL_TRANSITION)

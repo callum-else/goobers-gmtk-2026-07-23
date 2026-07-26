@@ -8,9 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://c85s4hhincy7v" path="res://pres/audio/sfx/egg_timer.wav" id="2_fxnbf"]
 [ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
 [ext_resource type="AudioStream" uid="uid://oy35he5xpopn" path="res://pres/audio/music/level_music_loop_1.wav" id="3_djit6"]
+[ext_resource type="AudioStream" uid="uid://cou1hiy3u3cna" path="res://pres/audio/sfx/whistle.wav" id="3_jrvf6"]
 [ext_resource type="AudioStream" uid="uid://lys46htfu8m1" path="res://pres/audio/music/level_music_loop_2.wav" id="4_jrvf6"]
 [ext_resource type="Script" uid="uid://dn4odk3gmromw" path="res://src/gameplay/level/level_manager_3d.gd" id="4_u5bw3"]
 [ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
+[ext_resource type="AudioStream" uid="uid://bdq02fvjegjy3" path="res://pres/audio/music/level_music_loop_3.wav" id="5_djit6"]
 [ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level_3d.tscn" id="5_pwrtq"]
 [ext_resource type="PackedScene" uid="uid://cyfbjnuepio4i" path="res://scn/levels/main_menu/mm_level.tscn" id="6_788jm"]
 [ext_resource type="PackedScene" uid="uid://g82uko4ka4ts" path="res://scn/levels/no_running/nr_level_3d.tscn" id="6_b3ktp"]
@@ -31,7 +33,8 @@
 [node name="AudioNode" type="Node" parent="." unique_id=763587193]
 script = ExtResource("1_oyg7f")
 countdown_timer_sfx = Array[AudioStream]([ExtResource("2_fxnbf")])
-level_music = Array[AudioStream]([ExtResource("3_djit6"), ExtResource("4_jrvf6")])
+level_finish_sfx = Array[AudioStream]([ExtResource("3_jrvf6")])
+level_music = Array[AudioStream]([ExtResource("3_djit6"), ExtResource("4_jrvf6"), ExtResource("5_djit6")])
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="AudioNode" unique_id=1901130499]
 

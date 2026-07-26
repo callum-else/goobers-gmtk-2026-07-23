@@ -39,9 +39,13 @@ enum LevelState {
 	COMPLETED
 }
 
-enum Audio {
-	COUNTDOWN_TIMER,
+enum Music {
 	LEVEL_MUSIC,
+}
+
+enum SFX {
+	COUNTDOWN_TIMER,
+	LEVEL_FINISH
 }
 
 const GOOB_GRAB_HEIGHT: int = 5
