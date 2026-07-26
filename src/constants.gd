@@ -25,4 +25,5 @@ enum LevelId {
 	NO_RUNNING
 }
 
-const GRAB_HEIGHT = 5
+const GOOB_GRAB_HEIGHT: int = 5
+const GOOB_TAGGED_COLOR: Color = Color("A49A87")

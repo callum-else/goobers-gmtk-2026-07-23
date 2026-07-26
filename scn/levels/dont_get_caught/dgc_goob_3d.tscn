@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://btlgpnvwc6l7u"]
+
+[ext_resource type="PackedScene" uid="uid://ba4t77gnbhmh7" path="res://scn/goob/base_goob_3d.tscn" id="1_os21c"]
+[ext_resource type="Script" uid="uid://d3vv7dlytmqyk" path="res://src/goob/state/goob_grabbed_state_3d.gd" id="2_t3x8t"]
+[ext_resource type="Script" uid="uid://brgymmepf8hmc" path="res://src/camera_to_world_raycast/camera_to_world_raycast_listener_3d.gd" id="3_e8yrj"]
+[ext_resource type="Script" uid="uid://cp380qahcavy" path="res://src/goob/state/goob_thrown_state_3d.gd" id="4_g4214"]
+[ext_resource type="Script" uid="uid://bbbdibdwvm4j5" path="res://src/goob/state/goob_confused_state_3d.gd" id="5_w5p4s"]
+[ext_resource type="Script" uid="uid://su8myajtabck" path="res://src/goob/state/goob_freeze_state_3d.gd" id="6_uknae"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ymh1w"]
+radius = 2.5
+
+[node name="GoobBody3D" unique_id=2107450553 instance=ExtResource("1_os21c")]
+
+[node name="GoobGrabbedState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="0" unique_id=470620477]
+script = ExtResource("2_t3x8t")
+on_released_state = 1
+metadata/_custom_type_script = "uid://d3vv7dlytmqyk"
+
+[node name="GoobClickedListener3D" type="Area3D" parent="GoobStateMachine3D/GoobGrabbedState3D" index="0" unique_id=1619118569]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_e8yrj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobGrabbedState3D/GoobClickedListener3D" index="0" unique_id=937789994]
+shape = SubResource("SphereShape3D_ymh1w")
+
+[node name="GoobThrownState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="1" unique_id=296860245]
+script = ExtResource("4_g4214")
+on_idle_state = 2
+metadata/_custom_type_script = "uid://cp380qahcavy"
+
+[node name="GoobConfusedState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="2" unique_id=1746971575]
+script = ExtResource("5_w5p4s")
+timeout_state = 3
+min_confused_timeout = 1.5
+max_confuded_timeout = 3.0
+metadata/_custom_type_script = "uid://bbbdibdwvm4j5"
+
+[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="3" unique_id=2023478454]
+script = ExtResource("6_uknae")
+freeze_ridigbody = true
+metadata/_custom_type_script = "uid://su8myajtabck"

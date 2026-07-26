@@ -12,8 +12,12 @@ class SetupArgs:
 		body = body_3d
 		renderer = renderer_3d
 
+class Priority:
+	const DEFAULT: int = 0
+	const FINAL: int = 1000
+
 @warning_ignore("unused_signal")
-signal request_state(state: Constants.GoobState, can_change: bool)
+signal request_state(state: Constants.GoobState, priority: int)
 
 @abstract
 func get_id() -> Constants.GoobState

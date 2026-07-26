@@ -15,3 +15,9 @@ func setup(
 
 func get_current_state() -> Constants.GoobState:
 	return _state_machine.get_state_id()
+
+func set_current_state(state: Constants.GoobState, can_change: bool) -> void:
+	_state_machine.set_state(state, can_change)
+
+func set_body_color(color: Color) -> void:
+	_renderer.set_body_color(color)

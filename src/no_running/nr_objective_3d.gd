@@ -10,7 +10,7 @@ func _exit_tree() -> void:
 
 func _on_level_timeout() -> void:
 	_check_completed_state()
-	Events.freeze_goobs.emit(false)
+	Events.freeze_goobs.emit(GoobState3D.Priority.FINAL)
 
 func _check_completed_state() -> void:
 	for goob in spawner.get_goobs():

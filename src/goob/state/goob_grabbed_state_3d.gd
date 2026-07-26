@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		if (not is_held):
 			_on_goob_released()
 			return
-		var target_pos = InputState.get_mouse_world_pos(Constants.GRAB_HEIGHT)
+		var target_pos = InputState.get_mouse_world_pos(Constants.GOOB_GRAB_HEIGHT)
 		var body_pos = _args.body.global_position
 		var lerped_pos = body_pos.lerp(
 			target_pos,
@@ -51,8 +51,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_goob_clicked() -> void:
 	_is_held = true
-	request_state.emit(Constants.GoobState.GRABBED, true)
+	request_state.emit(Constants.GoobState.GRABBED, GoobState3D.Priority.DEFAULT)
 
 func _on_goob_released() -> void:
 	_is_held = false
-	request_state.emit(on_released_state, true)
+	request_state.emit(on_released_state, GoobState3D.Priority.DEFAULT)

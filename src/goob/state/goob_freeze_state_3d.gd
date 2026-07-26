@@ -25,5 +25,5 @@ func enter() -> void:
 func exit() -> void:
 	Events.freeze_goobs.disconnect(_on_freeze_goobs)
 
-func _on_freeze_goobs(can_transition: bool) -> void:
-	request_state.emit(Constants.GoobState.FREEZE, can_transition)
+func _on_freeze_goobs(priority: int) -> void:
+	request_state.emit(Constants.GoobState.FREEZE, priority)

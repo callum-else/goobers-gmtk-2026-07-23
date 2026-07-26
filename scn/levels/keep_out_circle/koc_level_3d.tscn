@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle/koc_goob_3d.tscn" id="2_xjxy4"]
 [ext_resource type="Script" uid="uid://brn4g85jurfey" path="res://src/keep_out_circle/koc_objective_3d.gd" id="4_jjgpa"]
 [ext_resource type="Shader" uid="uid://cptn6e35yyq1k" path="res://pres/keep_out_circle/warbly_circle.gdshader" id="4_tmemk"]
-[ext_resource type="Texture2D" uid="uid://dwlbmkogusk3h" path="res://pres/keep_out_circle/tex/keep_out.png" id="7_cxehn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oug3g"]
 size = Vector3(500, 1, 500)
@@ -60,8 +59,3 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objective3D/Area3D" unique_id=471078900]
 shape = SubResource("SphereShape3D_xjxy4")
-
-[node name="Sprite3D" type="Sprite3D" parent="Objective3D" unique_id=103693953]
-transform = Transform3D(0.9986295, -0.009088044, -0.051540855, 0, 0.9848077, -0.17364818, 0.05233596, 0.17341019, 0.98345804, 13, 0, -18)
-axis = 1
-texture = ExtResource("7_cxehn")

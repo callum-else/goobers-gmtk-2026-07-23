@@ -19,4 +19,4 @@ func exit() -> void:
 	Events.on_level_start.disconnect(_on_level_start)
 
 func _on_level_start() -> void:
-	request_state.emit(level_start_state, true)
+	request_state.emit(level_start_state, GoobState3D.Priority.DEFAULT)

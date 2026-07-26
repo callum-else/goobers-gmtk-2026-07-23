@@ -5,7 +5,7 @@ class_name GoobStateMachine3D
 
 var _states: Dictionary[Constants.GoobState, GoobState3D] = {}
 var _current_state: GoobState3D
-var _can_change_state: bool = true
+var _current_priority: int = 0
 
 func setup(args: GoobState3D.SetupArgs) -> void:
 	for child in get_children():
@@ -16,10 +16,9 @@ func setup(args: GoobState3D.SetupArgs) -> void:
 			_states[state.get_id()] = state
 	set_state(starting_state, true)
 
-func set_state(state: Constants.GoobState, can_change: bool = true) -> void:
-	if (not _can_change_state):
+func set_state(state: Constants.GoobState, priority: int) -> void:
+	if (priority < _current_priority):
 		return
-	_can_change_state = can_change
 	if _current_state:
 		_current_state.exit()
 	_current_state = _states[state]

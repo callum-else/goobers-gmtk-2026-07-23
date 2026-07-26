@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var pos_scale: float = clamp(
-		MIN_SCALE + (global_position.y / Constants.GRAB_HEIGHT) * (MAX_SCALE - MIN_SCALE),
+		MIN_SCALE + (global_position.y / Constants.GOOB_GRAB_HEIGHT) * (MAX_SCALE - MIN_SCALE),
 		MIN_SCALE, MAX_SCALE
 	)
 	scale = Vector3(pos_scale, pos_scale, pos_scale)
