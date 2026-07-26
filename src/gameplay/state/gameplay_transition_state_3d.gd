@@ -1,8 +1,6 @@
 extends GameplayState3D
 class_name GameplayTransitionState3D
 
-@onready var _timer: Timer = $MinimumTransitionWaitTimer
-
 var _args: GameplayState3D.SetupArgs
 
 func get_id() -> Constants.GameplayState:
@@ -14,17 +12,13 @@ func setup(args: SetupArgs) -> void:
 func enter() -> void:
 	Events.update_raycast_input.emit(false)
 	await _args.control_renderer.animate_circle_wipe_async(true)
-	var levels := _args.level_manager.get_remaining_levels()
-	if (levels.is_empty()):
+	var spawned := _args.level_manager.try_spawn_next_level()
+	var current_level := _args.level_manager.get_current_level_id()
+	var level_data := _args.level_manager.get_ordered_level_data()
+	await _args.control_renderer.animate_progress_async(current_level, level_data)
+	if (not spawned):
 		request_state.emit(Constants.GameplayState.GAME_OVER)
-		_timer.start()
-		await _timer.timeout
 		return
-	var new_level: Constants.LevelId = levels.pick_random()
-	_timer.start()
-	_args.level_manager.set_current_level(new_level)
-	if (not _timer.is_stopped()):
-		await _timer.timeout
 	request_state.emit(Constants.GameplayState.LEVEL_START)
 
 func exit() -> void:

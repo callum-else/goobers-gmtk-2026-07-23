@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccba457kctdg2"]
 
 [ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver_node.gd" id="1_0lpx0"]
-[ext_resource type="PackedScene" uid="uid://bnrqando14v58" path="res://scn/control_renderer_ui.tscn" id="1_cn0cm"]
+[ext_resource type="PackedScene" uid="uid://bnrqando14v58" path="res://scn/ui/control_renderer_ui.tscn" id="1_cn0cm"]
 [ext_resource type="Script" uid="uid://bff0x7pkkr3mb" path="res://src/gameplay/state/gameplay_transition_state_3d.gd" id="2_2mga5"]
 [ext_resource type="Script" uid="uid://dmq3ndihvebf7" path="res://src/gameplay/state/gameplay_state_machine_3d.gd" id="2_7tb7r"]
 [ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
@@ -68,10 +68,6 @@ metadata/_custom_type_script = "uid://dihj2carme58n"
 
 [node name="GameplayTransitionState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=2043000946]
 script = ExtResource("2_2mga5")
-
-[node name="MinimumTransitionWaitTimer" type="Timer" parent="GameplayStateMachine3D/GameplayTransitionState3D" unique_id=1559744232]
-wait_time = 2.0
-one_shot = true
 
 [node name="GameplayLevelState3D" type="Node3D" parent="GameplayStateMachine3D" unique_id=873971547]
 script = ExtResource("7_u5bw3")

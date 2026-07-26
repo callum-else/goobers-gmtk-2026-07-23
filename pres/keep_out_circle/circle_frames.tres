@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dvl7jhukxgnrm"]
+
+[ext_resource type="Texture2D" uid="uid://b2qps0ow54db1" path="res://pres/keep_out_circle/tex/circle_1.png" id="1_1hys1"]
+[ext_resource type="Texture2D" uid="uid://b4xup26abw4ig" path="res://pres/keep_out_circle/tex/circle_2.png" id="2_paxu5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1hys1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_paxu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

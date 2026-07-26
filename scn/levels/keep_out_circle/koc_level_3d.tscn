@@ -5,23 +5,10 @@
 [ext_resource type="Resource" uid="uid://da0uayc5kr0pt" path="res://scn/levels/keep_out_circle/koc_level_config.tres" id="2_1y2yt"]
 [ext_resource type="PackedScene" uid="uid://caiyla2nvgml" path="res://scn/levels/keep_out_circle/koc_goob_3d.tscn" id="4_5mpym"]
 [ext_resource type="Script" uid="uid://brn4g85jurfey" path="res://src/keep_out_circle/koc_objective_3d.gd" id="4_jjgpa"]
-[ext_resource type="Shader" uid="uid://cptn6e35yyq1k" path="res://pres/keep_out_circle/warbly_circle.gdshader" id="4_tmemk"]
+[ext_resource type="SpriteFrames" uid="uid://dvl7jhukxgnrm" path="res://pres/keep_out_circle/circle_frames.tres" id="7_ytown"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oug3g"]
 size = Vector3(500, 1, 500)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjgpa"]
-render_priority = 0
-shader = ExtResource("4_tmemk")
-shader_parameter/radius = 0.4750000225625
-shader_parameter/line_width = 0.006000000285
-shader_parameter/wobble_amount = 0.010000000475
-shader_parameter/wobble_freq = 1.2000000095
-shader_parameter/frame_rate = 2.0000000475
-shader_parameter/line_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1y2yt"]
-size = Vector2(30, 30)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xjxy4"]
 radius = 15.0
@@ -48,10 +35,13 @@ shape = SubResource("BoxShape3D_oug3g")
 [node name="Objective3D" type="Node3D" parent="." unique_id=1136768145]
 script = ExtResource("4_jjgpa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Objective3D" unique_id=1339118732]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = SubResource("ShaderMaterial_jjgpa")
-mesh = SubResource("PlaneMesh_1y2yt")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Objective3D" unique_id=333473491]
+transform = Transform3D(0.4226182, 0, -0.90630776, 0, 1, 0, 0.90630776, 0, 0.4226182, 0, -1, 0)
+modulate = Color(0.047058824, 0.03529412, 0.03137255, 1)
+pixel_size = 0.075
+axis = 1
+sprite_frames = ExtResource("7_ytown")
+frame_progress = 0.40888056
 
 [node name="Area3D" type="Area3D" parent="Objective3D" unique_id=1503358139]
 collision_layer = 0

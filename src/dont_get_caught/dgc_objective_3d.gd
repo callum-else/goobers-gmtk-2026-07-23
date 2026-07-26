@@ -11,6 +11,6 @@ func _exit_tree() -> void:
 func _on_level_timeout() -> void:
 	for goob in spawner.get_goobs():
 		if (goob.get_current_state() != Constants.GoobState.TAGGED):
-			LevelState.set_level_completed(Constants.LevelId.DONT_GET_CAUGHT)
+			Events.on_level_success.emit(Constants.LevelId.DONT_GET_CAUGHT)
 			break
 	Events.freeze_goobs.emit(GoobState3D.Priority.FINAL)

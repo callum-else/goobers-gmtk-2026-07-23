@@ -27,5 +27,14 @@ enum LevelId {
 	DONT_GET_CAUGHT
 }
 
+enum LevelState {
+	NONE,
+	SPAWNED,
+	COMPLETED
+}
+
 const GOOB_GRAB_HEIGHT: int = 5
-const GOOB_TAGGED_COLOR: Color = Color("A49A87")
+
+const PALETTE_COLOR_GREY: Color = Color("a49a87ff")
+const PALETTE_COLOR_WHITE: Color = Color("fdf4dcff")
+const PALETTE_COLOR_GREEN: Color = Color("31cc5dff")

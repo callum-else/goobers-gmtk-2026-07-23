@@ -16,4 +16,4 @@ func _check_completed_state() -> void:
 	for goob in spawner.get_goobs():
 		if (goob.get_current_state() == Constants.GoobState.RUN):
 			return
-	LevelState.set_level_completed(Constants.LevelId.NO_RUNNING)
+	Events.on_level_success.emit(Constants.LevelId.NO_RUNNING)

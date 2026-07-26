@@ -4,11 +4,11 @@
 [ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="2_bnpfj"]
 [ext_resource type="SpriteFrames" uid="uid://bpa1p2r7flmwq" path="res://pres/eyes/eyes_frames.tres" id="3_fatji"]
 
-[node name="GoobRenderer3D" type="Node3D" unique_id=1217293487]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0)
+[node name="GoobRenderer3D" type="Node3D" unique_id=2057821113]
 script = ExtResource("1_x6y7o")
+metadata/_custom_type_script = "uid://cbgv2ypudob0d"
 
-[node name="BodySprite3D" type="AnimatedSprite3D" parent="." unique_id=859459344]
+[node name="BodySprite3D" type="AnimatedSprite3D" parent="." unique_id=1815323022]
 modulate = Color(0.047058824, 0.03529412, 0.03137255, 1)
 axis = 1
 sprite_frames = ExtResource("2_bnpfj")
@@ -16,7 +16,7 @@ animation = &"panic"
 autoplay = "idle"
 frame_progress = 0.0915916
 
-[node name="EyeSprite3D" type="AnimatedSprite3D" parent="." unique_id=1520493093]
+[node name="EyeSprite3D" type="AnimatedSprite3D" parent="." unique_id=760823415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 axis = 1
 sprite_frames = ExtResource("3_fatji")

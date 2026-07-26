@@ -39,7 +39,7 @@ func enter() -> void:
 		_direction = Utilities.get_random_direction()
 	_conversion_timer.start()
 	await _conversion_timer.timeout
-	_args.renderer.set_body_color(Constants.GOOB_TAGGED_COLOR)
+	_args.renderer.set_body_color(Constants.PALETTE_COLOR_GREY)
 	_args.renderer.begin_running_anim(GoobRenderer3D.EyeMode.ANGRY)
 	_target_timer.start()
 	set_physics_process(true)

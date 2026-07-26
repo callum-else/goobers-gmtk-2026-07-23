@@ -18,7 +18,6 @@ func _process(_delta: float) -> void:
 		set_process(false)
 		return
 	_label.text = _get_timer_text(remaining)
-	print (_label.text)
 	_border.set_instance_shader_parameter("progress", maxf(remaining / _timer.wait_time, 0.0))
 
 func _get_timer_text(remaining: float) -> String:

@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Events="*uid://c73cijkxcf876"
 InputState="*uid://b8toyl47acflb"
-LevelState="*uid://csqluvyxv25tq"
 GoobState="*uid://b8vmhj0pl2rxe"
 
 [input]
