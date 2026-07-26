@@ -18,12 +18,9 @@ shader_parameter/border_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
 default_font = ExtResource("5_ixtql")
 default_font_size = 104
 
-[sub_resource type="LabelSettings" id="LabelSettings_qsua4"]
-font = ExtResource("5_ixtql")
-font_size = 128
-font_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
-outline_size = 20
-outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)
+[sub_resource type="Theme" id="Theme_cwmvi"]
+default_font = ExtResource("5_ixtql")
+default_font_size = 128
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6hna"]
 shader = ExtResource("6_t4xsq")
@@ -74,6 +71,7 @@ text = "[shake rate=10 level=5]10[/shake]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -90,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_jiof0")
 
-[node name="LevelStartCountdownLabel" type="Label" parent="LevelStartCountdownControl" unique_id=1345745674]
+[node name="LevelStartCountdownLabel" type="RichTextLabel" parent="LevelStartCountdownControl" unique_id=1318944523]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,13 +96,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -46.5
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-label_settings = SubResource("LabelSettings_qsua4")
+theme = SubResource("Theme_cwmvi")
+theme_override_colors/default_color = Color(0.047058824, 0.03529412, 0.03137255, 1)
+theme_override_colors/font_outline_color = Color(0.99215686, 0.95686275, 0.8627451, 1)
+theme_override_constants/outline_size = 20
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelStartTimer" type="Timer" parent="LevelStartCountdownControl" unique_id=1905159210]
 wait_time = 4.5
