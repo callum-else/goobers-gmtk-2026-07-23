@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2xvnon4w45xk" path="res://src/keep_out_circle/koc_goob_spawner_3d.gd" id="1_g7vm0"]
 [ext_resource type="Script" uid="uid://c5tjttotcblqb" path="res://src/keep_out_circle/koc_level_3d.gd" id="1_xjxy4"]
 [ext_resource type="Resource" uid="uid://da0uayc5kr0pt" path="res://scn/levels/keep_out_circle/koc_level_config.tres" id="2_1y2yt"]
-[ext_resource type="PackedScene" uid="uid://bspd7gh2dm63k" path="res://scn/levels/keep_out_circle/koc_goob_3d.tscn" id="2_xjxy4"]
+[ext_resource type="PackedScene" uid="uid://caiyla2nvgml" path="res://scn/levels/keep_out_circle/koc_goob_3d.tscn" id="4_5mpym"]
 [ext_resource type="Script" uid="uid://brn4g85jurfey" path="res://src/keep_out_circle/koc_objective_3d.gd" id="4_jjgpa"]
 [ext_resource type="Shader" uid="uid://cptn6e35yyq1k" path="res://pres/keep_out_circle/warbly_circle.gdshader" id="4_tmemk"]
 
@@ -33,7 +33,7 @@ metadata/_custom_type_script = "uid://d3wvrcubdjd5a"
 
 [node name="GoobSpawner3D" type="Node3D" parent="." unique_id=1082646582]
 script = ExtResource("1_g7vm0")
-goob_scene = ExtResource("2_xjxy4")
+goob_scene = ExtResource("4_5mpym")
 goob_count = 15
 min_distribution_distance = 35.0
 max_distribution_distance = 45.0

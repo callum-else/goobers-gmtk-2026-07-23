@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://c34lo16gk8lqg" path="res://scn/levels/no_running/nr_level_config.tres" id="2_sia7p"]
 [ext_resource type="Script" uid="uid://4yeklgcem285" path="res://src/limits/limits_area_3d.gd" id="3_7jwle"]
 [ext_resource type="Script" uid="uid://cnywb5sjtlxjp" path="res://src/no_running/nr_objective_3d.gd" id="3_ad3fn"]
-[ext_resource type="PackedScene" uid="uid://dmnoa6crqw475" path="res://scn/levels/no_running/nr_goob_3d.tscn" id="3_sia7p"]
+[ext_resource type="PackedScene" uid="uid://c0lq56tbe7jel" path="res://scn/levels/no_running/nr_goob_3d.tscn" id="4_sia7p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwxdn"]
 size = Vector3(500, 1, 500)
@@ -19,7 +19,7 @@ level_config = ExtResource("2_sia7p")
 
 [node name="GoobSpawner3D" type="Node3D" parent="." unique_id=1653467729]
 script = ExtResource("2_4yqsf")
-goob_scene = ExtResource("3_sia7p")
+goob_scene = ExtResource("4_sia7p")
 goob_count = 12
 max_distribution_distance = 15.0
 

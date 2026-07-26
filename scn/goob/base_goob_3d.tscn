@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ba4t77gnbhmh7"]
 
+[ext_resource type="Script" uid="uid://cnckw3uqi3ivq" path="res://src/goob/goob_body_3d.gd" id="1_b7l2y"]
 [ext_resource type="Script" uid="uid://cbgv2ypudob0d" path="res://src/goob/goob_renderer_3d.gd" id="1_fqa14"]
 [ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="2_oaaxx"]
 [ext_resource type="SpriteFrames" uid="uid://bpa1p2r7flmwq" path="res://pres/eyes/eyes_frames.tres" id="3_b7l2y"]
@@ -24,6 +25,7 @@ physics_material_override = SubResource("PhysicsMaterial_u28rl")
 gravity_scale = 2.0
 lock_rotation = true
 linear_damp = 0.6
+script = ExtResource("1_b7l2y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1245043598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
