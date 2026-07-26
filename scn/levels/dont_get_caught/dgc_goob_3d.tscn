@@ -6,13 +6,61 @@
 [ext_resource type="Script" uid="uid://cp380qahcavy" path="res://src/goob/state/goob_thrown_state_3d.gd" id="4_g4214"]
 [ext_resource type="Script" uid="uid://bbbdibdwvm4j5" path="res://src/goob/state/goob_confused_state_3d.gd" id="5_w5p4s"]
 [ext_resource type="Script" uid="uid://su8myajtabck" path="res://src/goob/state/goob_freeze_state_3d.gd" id="6_uknae"]
+[ext_resource type="Script" uid="uid://cn8t6fhtyd67r" path="res://src/goob/state/goob_tag_state_3d.gd" id="7_uknae"]
+[ext_resource type="Script" uid="uid://btqbxildj04jf" path="res://src/goob/goob_detector_3d.gd" id="8_a5q8c"]
+[ext_resource type="Script" uid="uid://chlw2u2ly4oka" path="res://src/goob/goob_run_limiter_3d.gd" id="8_vpkgn"]
+[ext_resource type="Script" uid="uid://cis3scu8ge52y" path="res://src/goob/state/goob_run_state_3d.gd" id="9_lmntk"]
+[ext_resource type="Script" uid="uid://hq3cj87obmb7" path="res://src/goob/goob_avoidance_3d.gd" id="10_u7slj"]
+[ext_resource type="Script" uid="uid://d1ok0ji2renwp" path="res://src/limits/limits_listener_3d.gd" id="11_7c1m6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c85v1"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vpkgn"]
+radius = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ymh1w"]
 radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_o2cfl"]
+radius = 6.0
+
 [node name="GoobBody3D" unique_id=2107450553 instance=ExtResource("1_os21c")]
 
-[node name="GoobGrabbedState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="0" unique_id=470620477]
+[node name="GoobStateMachine3D" parent="." index="2" unique_id=560916213]
+starting_state = 7
+
+[node name="GoobTagState3D" type="Node3D" parent="GoobStateMachine3D" index="0" unique_id=724515816]
+script = ExtResource("7_uknae")
+metadata/_custom_type_script = "uid://cn8t6fhtyd67r"
+
+[node name="GoobRunLimiter3D" type="Node3D" parent="GoobStateMachine3D/GoobTagState3D" index="0" unique_id=2053853663]
+script = ExtResource("8_vpkgn")
+metadata/_custom_type_script = "uid://chlw2u2ly4oka"
+
+[node name="LimitsListener3D" type="Area3D" parent="GoobStateMachine3D/GoobTagState3D/GoobRunLimiter3D" index="0" unique_id=162009548]
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_7c1m6")
+metadata/_custom_type_script = "uid://d1ok0ji2renwp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobTagState3D/GoobRunLimiter3D/LimitsListener3D" index="0" unique_id=1269524282]
+shape = SubResource("SphereShape3D_c85v1")
+
+[node name="GoobDetector3D" type="Area3D" parent="GoobStateMachine3D/GoobTagState3D" index="1" unique_id=2030015985]
+script = ExtResource("8_a5q8c")
+metadata/_custom_type_script = "uid://btqbxildj04jf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobTagState3D/GoobDetector3D" index="0" unique_id=295481451]
+shape = SubResource("SphereShape3D_vpkgn")
+
+[node name="ConversionTimer" type="Timer" parent="GoobStateMachine3D/GoobTagState3D" index="2" unique_id=853090518]
+
+[node name="UpdateTargetTimer" type="Timer" parent="GoobStateMachine3D/GoobTagState3D" index="3" unique_id=1690223379]
+wait_time = 0.5
+
+[node name="GoobGrabbedState3D" type="Node3D" parent="GoobStateMachine3D" index="1" unique_id=470620477]
 script = ExtResource("2_t3x8t")
 on_released_state = 1
 metadata/_custom_type_script = "uid://d3vv7dlytmqyk"
@@ -26,19 +74,47 @@ script = ExtResource("3_e8yrj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobGrabbedState3D/GoobClickedListener3D" index="0" unique_id=937789994]
 shape = SubResource("SphereShape3D_ymh1w")
 
-[node name="GoobThrownState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="1" unique_id=296860245]
+[node name="GoobThrownState3D" type="Node3D" parent="GoobStateMachine3D" index="2" unique_id=296860245]
 script = ExtResource("4_g4214")
 on_idle_state = 2
 metadata/_custom_type_script = "uid://cp380qahcavy"
 
-[node name="GoobConfusedState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="2" unique_id=1746971575]
+[node name="GoobConfusedState3D" type="Node3D" parent="GoobStateMachine3D" index="3" unique_id=1746971575]
 script = ExtResource("5_w5p4s")
-timeout_state = 3
+timeout_state = 7
 min_confused_timeout = 1.5
 max_confuded_timeout = 3.0
 metadata/_custom_type_script = "uid://bbbdibdwvm4j5"
 
-[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" parent_id_path=PackedInt32Array(560916213) index="3" unique_id=2023478454]
+[node name="GoobRunState3D" type="Node3D" parent="GoobStateMachine3D" index="4" unique_id=1649233096]
+script = ExtResource("9_lmntk")
+metadata/_custom_type_script = "uid://cis3scu8ge52y"
+
+[node name="GoobAvoidance3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D" index="0" unique_id=2080506116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("10_u7slj")
+metadata/_custom_type_script = "uid://hq3cj87obmb7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobAvoidance3D" index="0" unique_id=1256899479]
+shape = SubResource("SphereShape3D_o2cfl")
+
+[node name="GoobRunLimiter3D" type="Node3D" parent="GoobStateMachine3D/GoobRunState3D" index="1" unique_id=399089815]
+script = ExtResource("8_vpkgn")
+metadata/_custom_type_script = "uid://chlw2u2ly4oka"
+
+[node name="LimitsListener3D" type="Area3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D" index="0" unique_id=2000799793]
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_7c1m6")
+metadata/_custom_type_script = "uid://d1ok0ji2renwp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoobStateMachine3D/GoobRunState3D/GoobRunLimiter3D/LimitsListener3D" index="0" unique_id=1469747546]
+shape = SubResource("SphereShape3D_c85v1")
+
+[node name="GoobFreezeState3D" type="Node3D" parent="GoobStateMachine3D" index="5" unique_id=2023478454]
 script = ExtResource("6_uknae")
 freeze_ridigbody = true
 metadata/_custom_type_script = "uid://su8myajtabck"

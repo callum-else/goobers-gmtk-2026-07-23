@@ -9,7 +9,8 @@ enum GoobState {
 	WAITING,
 	FREEZE,
 	RUN,
-	CLICKED
+	CLICKED,
+	TAGGED
 }
 
 enum GameplayState {
@@ -22,7 +23,8 @@ enum GameplayState {
 
 enum LevelId {
 	KEEP_OUT_CIRCLE,
-	NO_RUNNING
+	NO_RUNNING,
+	DONT_GET_CAUGHT
 }
 
 const GOOB_GRAB_HEIGHT: int = 5

@@ -1,10 +1,22 @@
 extends Node3D
 class_name GoobRenderer3D
 
+enum EyeMode {
+	OPEN,
+	CHEVRON,
+	ANGRY
+}
+
 const MIN_SCALE: float = 1
 const MAX_SCALE: float = 1.8
 const MIN_ROT: float = 5.0
 const MAX_ROT: float = 15.0
+
+const EYE_MODE_MAP: Dictionary[EyeMode, String] = {
+	EyeMode.OPEN: "open",
+	EyeMode.CHEVRON: "chevron",
+	EyeMode.ANGRY: "angry"
+}
 
 @onready var _body_spr: AnimatedSprite3D = $BodySprite3D
 @onready var _eyes_spr: AnimatedSprite3D = $EyeSprite3D
@@ -32,17 +44,17 @@ func freeze() -> void:
 	_body_spr.pause()
 	_eyes_spr.pause()
 
-func begin_running_anim() -> void:
+func begin_running_anim(eye_mode: EyeMode = EyeMode.OPEN) -> void:
 	var offset = _get_rand_speed_offset()
 	_body_spr.play("run", offset)
-	_eyes_spr.play("open", offset)
+	_eyes_spr.play(EYE_MODE_MAP[eye_mode], offset)
 
-func begin_idle_anim() -> void:
+func begin_idle_anim(eye_mode: EyeMode = EyeMode.OPEN) -> void:
 	var offset = _get_rand_speed_offset()
 	_body_spr.play("idle", offset)
-	_eyes_spr.play("open", offset)
+	_eyes_spr.play(EYE_MODE_MAP[eye_mode], offset)
 
-func begin_panic_anim() -> void:
+func begin_panic_anim(eye_mode: EyeMode = EyeMode.CHEVRON) -> void:
 	var offset = _get_rand_speed_offset()
 	_body_spr.play("panic", offset)
-	_eyes_spr.play("chevron", offset)
+	_eyes_spr.play(EYE_MODE_MAP[eye_mode], offset)

@@ -1,12 +1,25 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bpa1p2r7flmwq"]
 
+[ext_resource type="Texture2D" uid="uid://1fdblxnvco32" path="res://pres/eyes/tex/eyes_angry_1.png" id="1_7estd"]
 [ext_resource type="Texture2D" uid="uid://b5pv27qng3j1s" path="res://pres/eyes/tex/eyes_chev_1.png" id="1_gd83d"]
+[ext_resource type="Texture2D" uid="uid://bd1lboh224hmo" path="res://pres/eyes/tex/eyes_angry_2.png" id="2_0pkrn"]
 [ext_resource type="Texture2D" uid="uid://ch3wfiv8jope8" path="res://pres/eyes/tex/eyes_chev_2.png" id="2_1okd2"]
 [ext_resource type="Texture2D" uid="uid://d2anyohum08m2" path="res://pres/eyes/tex/eyes_circle_1.png" id="3_rq2ej"]
 [ext_resource type="Texture2D" uid="uid://ccfsfvql4rcm2" path="res://pres/eyes/tex/eyes_circle_2.png" id="4_s6dg5"]
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7estd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0pkrn")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 2.5
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_gd83d")

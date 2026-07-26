@@ -14,6 +14,7 @@ class SetupArgs:
 
 class Priority:
 	const DEFAULT: int = 0
+	const HIGH: int = 900
 	const FINAL: int = 1000
 
 @warning_ignore("unused_signal")

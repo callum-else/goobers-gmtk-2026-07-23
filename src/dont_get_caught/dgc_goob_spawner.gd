@@ -1,5 +1,5 @@
 extends Node3D
-class_name NoRunningGoobSpawner3D
+class_name DontGetCaughtGoobSpawner3D
 
 @export var goob_scene: PackedScene
 @export var goob_count: int
@@ -21,6 +21,16 @@ func _ready() -> void:
 		goob.setup(body_frames, body_color)
 		goob.global_position = pos
 		_goobs.append(goob)
+	Events.on_level_start.connect(_on_level_start)
+
+func _exit_tree() -> void:
+	Events.on_level_start.disconnect(_on_level_start)
+
+func _on_level_start() -> void:
+	if (_goobs.is_empty()):
+		return
+	var goob: GoobBody3D = _goobs.pick_random()
+	goob.set_current_state(Constants.GoobState.TAGGED, GoobState3D.Priority.HIGH)
 
 func get_goobs() -> Array[GoobBody3D]:
 	return _goobs

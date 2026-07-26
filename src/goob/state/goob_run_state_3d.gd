@@ -4,8 +4,8 @@ class_name GoobRunState3D
 const MOVE_FORCE: float = 200.0
 
 var _args: GoobState3D.SetupArgs
-var _avoidance: GoobAvoidance3D
 var _run_limiter: GoobRunLimiter3D
+var _avoidance: GoobAvoidance3D
 var _direction: Vector3
 
 func _ready() -> void:
@@ -16,8 +16,8 @@ func get_id() -> Constants.GoobState:
 
 func setup(args: GoobState3D.SetupArgs) -> void:
 	_args = args
-	_avoidance = $GoobAvoidance3D
 	_run_limiter = $GoobRunLimiter3D
+	_avoidance = $GoobAvoidance3D
 
 func enter() -> void:
 	if (not _run_limiter.is_outside_limits()):

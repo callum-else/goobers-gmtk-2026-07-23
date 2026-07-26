@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://g82uko4ka4ts" path="res://scn/levels/no_running/nr_level_3d.tscn" id="6_b3ktp"]
 [ext_resource type="Script" uid="uid://cvbgeq2xi2blk" path="res://src/gameplay/state/gameplay_level_state_3d.gd" id="7_u5bw3"]
 [ext_resource type="Script" uid="uid://dihj2carme58n" path="res://src/gameplay/state/gameplay_configuration_state_3d.gd" id="8_cxubq"]
+[ext_resource type="PackedScene" uid="uid://dylduxyerl5n5" path="res://scn/levels/dont_get_caught/dgc_level_3d.tscn" id="8_qr3ev"]
 [ext_resource type="SpriteFrames" uid="uid://bd1dyf4dmpcpm" path="res://pres/goobs/circle_goob/circle_goob_frames.tres" id="9_mwnnt"]
 [ext_resource type="SpriteFrames" uid="uid://np0dusl64kjh" path="res://pres/goobs/square_goob/square_goob_frames.tres" id="10_b3ktp"]
 [ext_resource type="Script" uid="uid://u0y117y300g5" path="res://src/gameplay/state/gameplay_gameover_state_3d.gd" id="10_urmxu"]
@@ -45,7 +46,8 @@ script = ExtResource("4_u5bw3")
 win_level = ExtResource("5_c1aws")
 levels = Dictionary[int, PackedScene]({
 0: ExtResource("5_pwrtq"),
-1: ExtResource("6_b3ktp")
+1: ExtResource("6_b3ktp"),
+2: ExtResource("8_qr3ev")
 })
 
 [node name="GameplayStateMachine3D" type="Node3D" parent="." unique_id=1122003603 node_paths=PackedStringArray("control_renderer", "level_manager")]

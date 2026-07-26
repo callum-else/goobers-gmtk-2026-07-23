@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dylduxyerl5n5"]
+
+[ext_resource type="Script" uid="uid://b4du2ckdiewff" path="res://src/dont_get_caught/dgc_goob_spawner.gd" id="1_qg3wv"]
+[ext_resource type="Script" uid="uid://bfdc3e8bab0hl" path="res://src/dont_get_caught/dgc_level_3d.gd" id="1_r0ivk"]
+[ext_resource type="Resource" uid="uid://cfy780wka346g" path="res://scn/levels/dont_get_caught/dgc_level_config.tres" id="2_b12k2"]
+[ext_resource type="PackedScene" uid="uid://btlgpnvwc6l7u" path="res://scn/levels/dont_get_caught/dgc_goob_3d.tscn" id="3_7011f"]
+[ext_resource type="Script" uid="uid://co7sepwgi4gmt" path="res://src/dont_get_caught/dgc_objective_3d.gd" id="3_w8wks"]
+[ext_resource type="Script" uid="uid://4yeklgcem285" path="res://src/limits/limits_area_3d.gd" id="5_icykn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0ivk"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b12k2"]
+size = Vector3(40, 40, 40)
+
+[node name="DontGetCaughtLevel3D" type="Node3D" unique_id=2019036429]
+script = ExtResource("1_r0ivk")
+level_config = ExtResource("2_b12k2")
+metadata/_custom_type_script = "uid://bfdc3e8bab0hl"
+
+[node name="GoobSpawner3D" type="Node3D" parent="." unique_id=1897095111]
+script = ExtResource("1_qg3wv")
+goob_scene = ExtResource("3_7011f")
+goob_count = 10
+min_distribution_distance = 20.0
+max_distribution_distance = 30.0
+metadata/_custom_type_script = "uid://b4du2ckdiewff"
+
+[node name="Floor3D" type="StaticBody3D" parent="." unique_id=285688232]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3D" unique_id=1177835226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_r0ivk")
+
+[node name="Limits3D" type="Area3D" parent="." unique_id=1592284800]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+script = ExtResource("5_icykn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Limits3D" unique_id=1949912891]
+shape = SubResource("BoxShape3D_b12k2")
+
+[node name="Objective3D" type="Node3D" parent="." unique_id=1779272458 node_paths=PackedStringArray("spawner")]
+script = ExtResource("3_w8wks")
+spawner = NodePath("../GoobSpawner3D")

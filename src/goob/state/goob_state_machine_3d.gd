@@ -20,6 +20,7 @@ func setup(args: GoobState3D.SetupArgs) -> void:
 func set_state(state: Constants.GoobState, priority: int) -> void:
 	if (priority < _current_priority):
 		return
+	_current_priority = priority
 	if _current_state:
 		_current_state.exit()
 	_current_state = _states[state]
