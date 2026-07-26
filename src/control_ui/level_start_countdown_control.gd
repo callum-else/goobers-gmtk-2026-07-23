@@ -1,7 +1,7 @@
 extends Control
 class_name LevelStartCountdownControl
 
-const COUNTDOWN_WAIT: float = 1.0
+const COUNTDOWN_WAIT: float = 0.0
 const COUNTDOWN_LENGTH: float = 3.0
 const COUNTDOWN_LINGER: float = 2
 const INSTRUCTION_FORMAT: String = "[wave freq=10 amp=60]%s[wave]"

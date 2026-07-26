@@ -16,8 +16,10 @@ func enter() -> void:
 	var level_3d := _args.level_manager.get_current_level()
 	var config := level_3d.level_config
 	await _args.control_renderer.animate_circle_wipe_async(false)
+	Events.trigger_audio.emit(Constants.Audio.COUNTDOWN_TIMER, true)
 	await _args.control_renderer.animate_level_start_async(
 		config.instruction)
+	Events.trigger_audio.emit(Constants.Audio.LEVEL_MUSIC, true)
 	Events.on_level_start.emit()
 	await _args.control_renderer.animate_level_duration_async(
 		config.level_duration)

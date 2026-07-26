@@ -24,6 +24,7 @@ func animate_circle_wipe_async(closed: bool, duration: float = 1) -> void:
 		1.0 if closed else 0.0,
 		duration)
 	await _circle_wipe_tween.finished
+	print ("finished")
 
 func reset_level_anims(full_clear: bool = false) -> void:
 	_duration_control.disable()

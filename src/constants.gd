@@ -39,6 +39,11 @@ enum LevelState {
 	COMPLETED
 }
 
+enum Audio {
+	COUNTDOWN_TIMER,
+	LEVEL_MUSIC,
+}
+
 const GOOB_GRAB_HEIGHT: int = 5
 
 const PALETTE_COLOR_GREY: Color = Color("a49a87ff")

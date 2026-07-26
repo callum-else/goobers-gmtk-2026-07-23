@@ -8,5 +8,6 @@ signal on_level_success(id: Constants.LevelId)
 signal freeze_goobs(priority: int)
 signal on_goob_button(event: Constants.GoobButtonEvent)
 signal update_raycast_input(enabled: bool)
+signal trigger_audio(audio: Constants.Audio, play: bool)
 
 @warning_ignore_restore("unused_signal")

@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://conqpw4ap3yl0" path="res://src/input_receiver_node.gd" id="1_0lpx0"]
 [ext_resource type="PackedScene" uid="uid://bnrqando14v58" path="res://scn/ui/control_renderer_ui.tscn" id="1_cn0cm"]
+[ext_resource type="Script" uid="uid://w0af5k3qbx2n" path="res://src/audio/audio_node.gd" id="1_oyg7f"]
 [ext_resource type="Script" uid="uid://bff0x7pkkr3mb" path="res://src/gameplay/state/gameplay_transition_state_3d.gd" id="2_2mga5"]
 [ext_resource type="Script" uid="uid://dmq3ndihvebf7" path="res://src/gameplay/state/gameplay_state_machine_3d.gd" id="2_7tb7r"]
+[ext_resource type="AudioStream" uid="uid://c85s4hhincy7v" path="res://pres/audio/sfx/egg_timer.wav" id="2_fxnbf"]
 [ext_resource type="Script" uid="uid://bbvmuefboahto" path="res://src/camera_to_world_raycast/camera_to_world_raycast_3d.gd" id="2_t544i"]
+[ext_resource type="AudioStream" uid="uid://oy35he5xpopn" path="res://pres/audio/music/level_music_loop_1.wav" id="3_djit6"]
+[ext_resource type="AudioStream" uid="uid://lys46htfu8m1" path="res://pres/audio/music/level_music_loop_2.wav" id="4_jrvf6"]
 [ext_resource type="Script" uid="uid://dn4odk3gmromw" path="res://src/gameplay/level/level_manager_3d.gd" id="4_u5bw3"]
 [ext_resource type="PackedScene" uid="uid://dqoweb3r83ruw" path="res://scn/levels/win/win_level.tscn" id="5_c1aws"]
 [ext_resource type="PackedScene" uid="uid://dp26no3i2xcus" path="res://scn/levels/keep_out_circle/koc_level_3d.tscn" id="5_pwrtq"]
@@ -23,6 +27,15 @@
 [sub_resource type="Environment" id="Environment_2i45h"]
 
 [node name="Root3D" type="Node3D" unique_id=293381945]
+
+[node name="AudioNode" type="Node" parent="." unique_id=763587193]
+script = ExtResource("1_oyg7f")
+countdown_timer_sfx = Array[AudioStream]([ExtResource("2_fxnbf")])
+level_music = Array[AudioStream]([ExtResource("3_djit6"), ExtResource("4_jrvf6")])
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="AudioNode" unique_id=1901130499]
+
+[node name="SfxStreamPlayer" type="AudioStreamPlayer" parent="AudioNode" unique_id=784141066]
 
 [node name="InputReceiverNode" type="Node" parent="." unique_id=1287798128 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_0lpx0")
